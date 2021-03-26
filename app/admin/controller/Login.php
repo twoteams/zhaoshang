@@ -24,7 +24,7 @@ class Login extends BaseController
             return show(config('status.user_not_found'),"用户不存在");
         }
         $data = $data->toArray();
-        if ($password!=$data['password']){
+        if (md5($password)!=$data['password']){
             return show(config('status.error'),"密码错误");
         }
         session(config('admin.session_admin'),$data);
