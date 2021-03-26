@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<?php /*a:1:{s:42:"E:\tp6\tp6\app\admin\view\index\index.html";i:1616674230;}*/ ?>
-=======
-<?php /*a:1:{s:42:"E:\tp6\tp6\app\admin\view\index\index.html";i:1616738804;}*/ ?>
->>>>>>> hjb
+<?php /*a:1:{s:72:"D:\phpstudy_pro\WWW\wwwbandcom\zhaoshang\app\admin\view\index\index.html";i:1616747916;}*/ ?>
 <!doctype html>
 <html class="x-admin-sm">
     <head>
@@ -123,6 +119,22 @@
 
                     </li>
 
+
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">
+                            <i class="iconfont left-nav-li" lay-tips="账单管理">&#xe6a2;</i>
+                            <cite>账单管理</cite>
+                            <i class="iconfont nav_right">&#xe697;</i></a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a onclick="xadmin.add_tab('账单管理','bill-list.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>账单列表</cite></a>
+                            </li>
+                        </ul>
+
+
+                    </li>
 
                     <li >
                         <a href="javascript:;">
