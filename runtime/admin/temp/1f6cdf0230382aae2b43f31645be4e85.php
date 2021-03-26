@@ -1,4 +1,4 @@
-<?php /*a:1:{s:44:"E:\tp6\tp6\app\admin\view\index\welcome.html";i:1616656290;}*/ ?>
+<?php /*a:1:{s:74:"D:\phpstudy_pro\WWW\wwwbandcom\zhaoshang\app\admin\view\index\welcome.html";i:1616744505;}*/ ?>
 <!DOCTYPE html>
 <html class="x-admin-sm">
     <head>
