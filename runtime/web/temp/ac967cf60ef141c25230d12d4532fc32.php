@@ -1,10 +1,11 @@
+<?php /*a:1:{s:55:"D:\MajorSix\www\zhaoshang\app\web\view\index\index.html";i:1616745443;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>二组银行信用卡申请</title>
-    <link rel="stylesheet" href="{__STATIC__}/layui/dist/css/layui.css">
-    <script src="{__STATIC__}/layui/dist/layui.all.js"></script>
+    <title>招商银行信用卡申请</title>
+    <link rel="stylesheet" href="/web//layui/dist/css/layui.css">
+    <script src="/web//layui/dist/layui.all.js"></script>
     <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="http://market.cmbchina.com/ccard/ccwebui/scripts/commonheader.js" type="text/javascript"></script>
@@ -467,7 +468,7 @@
             <div class="pagecontent-main-row">
                 <div class="pagecontent-main-box">
                     <div class="pagecontent-main-box-left">
-                        <img src="{__STATIC__}/images/pagecontent-main-row11-2.png">
+                        <img src="/web//images/pagecontent-main-row11-2.png">
 
                     </div>
                     <div class="pagecontent-main-box-right">

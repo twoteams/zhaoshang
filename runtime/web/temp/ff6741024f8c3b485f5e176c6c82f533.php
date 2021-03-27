@@ -1,3 +1,4 @@
+<?php /*a:1:{s:54:"D:\MajorSix\www\zhaoshang\app\web\view\index\home.html";i:1616807872;}*/ ?>
 <html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <title>首页-我的账户_二组银行信用卡会员中心200*60</title>
-    <link href="{__STATIC__}css/info.css" rel="stylesheet">
+    <link href="/web/css/info.css" rel="stylesheet">
 </head>
 
 <body>
@@ -15,7 +16,7 @@
 <div class="header">
     <div class="content">
         <a href="http://creditcard.ecitic.com/" title="二组银行信用卡中心官网" target="_blank" class="logo-area">
-            <img src="{__STATIC__}default/images/logo.jpg" alt="" width="200" height="60">
+            <img src="/web/default/images/logo.jpg" alt="" width="200" height="60">
         </a>
         <div class="menu-area">
             <span>欢迎您，<strong id="userName">啥啥啥</strong></span>
