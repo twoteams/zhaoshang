@@ -17,5 +17,7 @@ Route::get('index', 'Index/index');
 Route::get('welcome', 'Index/welcome');
 //文章列表
 Route::get('article-list','Article/index');
+//账单列表
+Route::get('bill-list','Bill/index');
 
 

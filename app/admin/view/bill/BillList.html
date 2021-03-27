@@ -1,4 +1,3 @@
-<?php /*a:1:{s:51:"E:\tp6\tp6\app\admin\view\article\article-list.html";i:1616674230;}*/ ?>
 <!DOCTYPE html>
 <html class="x-admin-sm">
 <head>
@@ -7,10 +6,10 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
-    <link rel="stylesheet" href="/admin//css/font.css">
-    <link rel="stylesheet" href="/admin//css/index.css">
-    <script src="/admin//lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="/admin//js/index.js"></script>
+    <link rel="stylesheet" href="{__STATIC__}/css/font.css">
+    <link rel="stylesheet" href="{__STATIC__}/css/index.css">
+    <script src="{__STATIC__}/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="{__STATIC__}/js/index.js"></script>
 
 </head>
 <body>
@@ -31,13 +30,7 @@
                 <div class="layui-card-body ">
                     <form class="layui-form layui-col-space5">
                         <div class="layui-inline layui-show-xs-block">
-                            <input class="layui-input"  autocomplete="off" placeholder="开始日" name="start" id="start">
-                        </div>
-                        <div class="layui-inline layui-show-xs-block">
-                            <input class="layui-input"  autocomplete="off" placeholder="截止日" name="end" id="end">
-                        </div>
-                        <div class="layui-inline layui-show-xs-block">
-                            <input type="text" name="username"  placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                            <input class="layui-input"  autocomplete="off" placeholder="请输入信用卡卡号" name="c_id">
                         </div>
                         <div class="layui-inline layui-show-xs-block">
                             <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
@@ -45,8 +38,8 @@
                     </form>
                 </div>
                 <div class="layui-card-header">
-                    <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-                    <button class="layui-btn" onclick="xadmin.open('添加用户','./articleadd.html',800,600)"><i class="layui-icon"></i>添加</button>
+                    <!--                    <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>-->
+                    <!--                    <button class="layui-btn" onclick="xadmin.open('添加账单','./articleadd.html',800,600)"><i class="layui-icon"></i>添加账单</button>-->
                 </div>
                 <div class="layui-card-body layui-table-body layui-table-main">
                     <table class="layui-table layui-form">
@@ -59,120 +52,49 @@
                                 ID
                             </th>
                             <th>
-                                文章标题
+                                信用卡号
                             </th>
                             <th>
-                                文章类型
+                                消费金额
                             </th>
                             <th>
-                                作者
+                                还款时间
                             </th>
                             <th>
-                                文章来源
+                                最低还款
                             </th>
                             <th>
-                                排序
-                            </th>
-                            <th>
-                                录入时间
-                            </th>
-                            <th>
-                                是否置顶
-                            </th>
-                            <th>
-                                是否推荐
-                            </th>
-                            <th>
-                                状态
+                                是否分期
                             </th>
                             <th>
                                 操作
                             </th>
                         </tr>
                         </thead>
+                        {foreach $list as $k=>$v}
                         <tbody>
                         <tr>
                             <td>
                                 <input type="checkbox" name="id" value="1"   lay-skin="primary">
                             </td>
                             <td>
-                                1
+                                {$v.id}
                             </td>
 
                             <td >
-                                世界以你环环相扣
+                                {$v.c_id}
                             </td>
                             <td >
-                                小说
+                                {$v.money}
                             </td>
                             <td >
-                                admin
+                                {$v.paymenttime}
+                            </td>
+                            <td >
+                                {$v.lawpay}
                             </td>
 
-                            <td >
-                                654321@mail.com
-                            </td>
-                            <td >
-                                3
-                            </td>
-                            <td>
-                                2017-01-01 11:11:42
-                            </td>
-                            <td class="td-status"> <span class="layui-btn layui-btn-normal " > 已启用 </span>
-                            </td>
-                            <td class="td-status"> <span class="layui-btn layui-btn-normal " > 已启用 </span>
-                            </td>
-                            <td class="td-status"> <span class="layui-btn layui-btn-normal " > 已启用 </span>
-                            </td>
-                            <td class="td-manage">
-                                <a style="text-decoration:none" onclick="member_stop(this,'10001')" href="javascript:;" title="停用">
-                                    <i class="layui-icon">&#xe601;</i>
-                                </a>
-                                <a title="编辑" href="javascript:;" onclick="xadmin.open('编辑','articleadd.html','800','510')"
-                                   class="ml-5" style="text-decoration:none">
-                                    <i class="layui-icon">&#xe642;</i>
-                                </a>
-
-                                <a title="删除" href="javascript:;" onclick="member_del(this,'1')"
-                                   style="text-decoration:none">
-                                    <i class="layui-icon">&#xe640;</i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" name="id" value="1"   lay-skin="primary">
-                            </td>
-                            <td>
-                                2
-                            </td>
-
-                            <td >
-                                世界以你环环相扣
-                            </td>
-                            <td >
-                                小说
-                            </td>
-                            <td >
-                                风羽
-                            </td>
-                            <td >
-                                123456@mail.com
-                            </td>
-                            <td >
-                                2
-                            </td>
-
-                            <td>
-                                2017-01-01 11:11:42
-                            </td>
-                            <td class="td-status"> <span class="layui-btn layui-btn-danger " > 已禁用 </span>
-                            </td>
-                            <td class="td-status"> <span class="layui-btn layui-btn-danger " > 已禁用 </span>
-                            </td>
-                            <td class="td-status"> <span class="layui-btn layui-btn-danger " > 已禁用 </span>
-                            </td>
-
+                            <td><?php if($v['is_install']==1){echo '是';}else{echo '否';}?></td>
                             <td class="td-manage">
                                 <a style="text-decoration:none" onclick="member_stop(this,'10001')" href="javascript:;" title="停用">
                                     <i class="layui-icon">&#xe601;</i>
@@ -188,6 +110,7 @@
                             </td>
                         </tr>
                         </tbody>
+                        {/foreach}
                     </table>
                 </div>
 
