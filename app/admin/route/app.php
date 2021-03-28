@@ -21,3 +21,6 @@ Route::get('article-list','Article/index');
 Route::get('bill-list','Bill/index');
 
 
+//立即还款
+
+
