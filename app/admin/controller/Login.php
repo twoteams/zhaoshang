@@ -7,11 +7,18 @@ use app\admin\model\Admin;
 use app\BaseController;
 use think\Request;
 use think\facade\View;
-class Login extends BaseController
+class Login extends Base
 {
+    public function initialize()
+    {
+        if ($this->is_Login()){
+            return $this->redirect('index');
+        }
+    }
 
     public function login()
     {
+//        dd(session(config('admin.session_admin')));
         return View::fetch();
     }
     public function LoginIndex()
@@ -27,12 +34,7 @@ class Login extends BaseController
         if (md5($password)!=$data['password']){
             return show(config('status.error'),"密码错误");
         }
-        session(config('admin.session_admin'),$data);
+       session(config('admin.session_admin'),$data);
         return show(config('status.success'),"登录成功");
-    }
-
-    public function logout()
-    {
-        return 111;
     }
 }
