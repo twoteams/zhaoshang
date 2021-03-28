@@ -3,13 +3,15 @@ declare (strict_types = 1);
 
 namespace app\admin\controller;
 
+use app\BaseController;
 use think\Db;
 use think\facade\View;
 
-class Index
+class Index extends Base
 {
     public function index()
     {
+//        dd(session(config('admin.session_admin')));
         return View::fetch();
     }
 
