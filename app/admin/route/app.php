@@ -19,13 +19,5 @@ Route::get('welcome', 'Index/welcome');
 Route::get('article-list','Article/index');
 //账单列表
 Route::get('bill-list','Bill/index');
-<<<<<<< HEAD
-
-
-//立即还款
-
-
-=======
 //退出登录
 Route::get('logout','Logout/index');
->>>>>>> 380b23d7eb0edbefee38cf9e73ae661f17895dda
