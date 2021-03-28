@@ -19,5 +19,5 @@ Route::get('welcome', 'Index/welcome');
 Route::get('article-list','Article/index');
 //账单列表
 Route::get('bill-list','Bill/index');
-
-
+//退出登录
+Route::get('logout','Logout/index');
