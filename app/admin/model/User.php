@@ -3,6 +3,7 @@ declare (strict_types = 1);
 
 namespace app\admin\model;
 
+use PHPMailer\PHPMailer\PHPMailer;
 use think\Model;
 
 /**
@@ -15,10 +16,10 @@ class User extends Model
         $data = $this
             ->join('card_face','user.cf_id = card_face.id')
             ->join('card_type','user.ct_id = card_type.id')
+            ->field("user.*,card_face.cf_name,card_type.ct_name")
             ->select();
         return $data;
     }
-
     //建议额度
     public static function updates($id,$price){
         if (!is_numeric($price) && $price!=""){
