@@ -1,3 +1,4 @@
+<?php /*a:1:{s:70:"D:\phpstudy_pro\WWW\wwwbandcom\zhaoshang\app\web\view\index\login.html";i:1616987036;}*/ ?>
 <html><head>
     <meta name="Generator" content="ECSHOP v4.1.4">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -6,25 +7,25 @@
     <title>用户中心</title>
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="icon" href="animated_favicon.gif" type="image/gif">
-    <link href="{__STATIC__}default/style.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="{__STATIC__}default/images/login_reg.css">
+    <link href="/web/default/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/web/default/images/login_reg.css">
 
-    <script type="text/javascript" src="{__STATIC__}js/common.js"></script><script type="text/javascript" src="{__STATIC__}js/user.js"></script><script type="text/javascript" src="{__STATIC__}js/transport.js"></script></head><body>
-<script type="text/javascript" src="{__STATIC__}js/transport2.js"></script><script type="text/javascript" src="{__STATIC__}js/utils.js"></script><link href="{__STATIC__}default/images/ec12.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/web/js/common.js"></script><script type="text/javascript" src="/web/js/user.js"></script><script type="text/javascript" src="/web/js/transport.js"></script></head><body>
+<script type="text/javascript" src="/web/js/transport2.js"></script><script type="text/javascript" src="/web/js/utils.js"></script><link href="/web/default/images/ec12.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
     var process_request = "正在处理您的请求...";
 </script>
-<script language="javascript" src="{__STATIC__}default/js/fdjs.js" type="text/javascript" charset="utf-8"></script>
-<script language="javascript" src="{__STATIC__}default/js/fdjs.json.js" type="text/javascript" charset="utf-8"></script>
-<div class="reg_top" style="padding-top:10px"> <img src="{__STATIC__}default/images/logo.gif" height="100px"></div>
+<script language="javascript" src="/web/default/js/fdjs.js" type="text/javascript" charset="utf-8"></script>
+<script language="javascript" src="/web/default/js/fdjs.json.js" type="text/javascript" charset="utf-8"></script>
+<div class="reg_top" style="padding-top:10px"> <img src="/web/default/images/logo.gif" height="100px"></div>
 <div class="clear0"></div><div class="blank"></div>
 <div class="container">
     <div id="body">
         <div class="loginWrap">
-            <div class="loginPic"> <img class="pic" src="{__STATIC__}default/images/loginPic.jpg" alt=""> <a href="index.php" class="piclink"></a>
+            <div class="loginPic"> <img class="pic" src="/web/default/images/loginPic.jpg" alt=""> <a href="index.php" class="piclink"></a>
                 <div class="loginBord">
                     <div class="loginTit"> <span class="fl">用户登录</span> <span class="fr"> <i class="grey">还没有注册账号？</i> <a href="user.php?act=register">立即注册</a></span> </div>
-                    <form name="formLogin" action="{:url('home/login/login')}" method="post" onsubmit="return userLogin()">
+                    <form name="formLogin" action="<?php echo url('home/login/login'); ?>" method="post" onsubmit="return userLogin()">
                         <div class="inputGroup noticWrap">
                             <div class="inputWrap">
                                 <div class="user-icon"></div>
@@ -64,7 +65,7 @@
 
 
 <div class="blank"></div>
-<div class="footads"><img alt="广告说明" src="{__STATIC__}default/images/footad.jpg"></div>
+<div class="footads"><img alt="广告说明" src="/web/default/images/footad.jpg"></div>
 
 <div class="footer">
     <div class="footHelp">

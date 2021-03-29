@@ -17,3 +17,6 @@ Route::get('home', 'Index/home');
 Route::get('search', 'Index/search');
 Route::get('repayment', 'Index/repayment');
 
+
+Route::get('login', 'Login/login');
+
