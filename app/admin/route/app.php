@@ -21,3 +21,8 @@ Route::get('article-list','Article/index');
 Route::get('bill-list','Bill/index');
 //退出登录
 Route::get('logout','Logout/index');
+//审批管理
+Route::group(function () {
+    //查看申请的所有信用卡信息
+    Route::rule('', 'Address/index');
+})->ext('html')->pattern(['id'=>'\d+', 'name'=>'\w+']);
