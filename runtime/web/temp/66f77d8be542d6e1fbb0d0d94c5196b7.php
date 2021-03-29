@@ -1,3 +1,4 @@
+<?php /*a:1:{s:52:"E:\wwwbankcom\zhaoshang\app\web\view\index\home.html";i:1617019178;}*/ ?>
 <html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
@@ -8,7 +9,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <title>首页-我的账户_二组银行信用卡会员中心</title>
     <link rel="shortcut icon" href="./logo.ico">
-    <link href="{__STATIC__}css/info.css" rel="stylesheet">
+    <link href="/web/css/info.css" rel="stylesheet">
 </head>
 
 <body>
@@ -263,7 +264,7 @@
             console.log(integral);
             $.ajax({
                 type: "PUT",
-                url: "{:url('integral')}",
+                url: "<?php echo url('integral'); ?>",
                 data: {
                     integral:integral
                 },
