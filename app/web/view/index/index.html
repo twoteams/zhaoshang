@@ -31,7 +31,7 @@
                 </div>
                 <ul class="gtop_nav01">
                     <li><a href="https://etrade.citicbank.com/portalweb/html/map.html?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE006">网点查询</a></li>
-                    <li><a href="https://uc.creditcard.ecitic.com/citiccard/ucweb/toRegister.do?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE047">登录</a></li>
+                    <li><a href="login" onclick="buttonEvent(this);" id="PCHOMEPAGE047">登录</a></li>
                 </ul>
                 <p class="gtop_tel">本网站已支持IPv6 &nbsp; 24小时客服热线40088-95558</p>
             </div>
@@ -205,7 +205,7 @@
                         </div>
                     </div>
                     <div class="card_sq_btn">
-                        <h3 class="qrbtn"><a href="create">免费申请</a></h3>
+                        <h3 class="qrbtn"><a :href="'create?id='+item.id">免费申请</a></h3>
                     </div>
                 </div>
             </li>
@@ -275,7 +275,7 @@
         },
         mounted () {
             axios
-                .get('http://www.zsbank.com/home/index')
+                .get('{:url("/home/card_face_list")}')
                 .then(response => (this.info = response.data.data))
                 .catch(function (error) { // 请求失败处理
                     console.log(error);

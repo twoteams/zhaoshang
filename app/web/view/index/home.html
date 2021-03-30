@@ -98,7 +98,7 @@
     <div class="con_930" style="display: none">
         <div class="title">
           <span>
-            <a href="openCard.html" target="_blank">信用卡开卡</a> |
+            <a href="{:url('/web/activation')}" target="_self">信用卡开卡</a> |
             <a href="javascript:void(0);" id="applyProcessQry_link">申请进度查询</a>
           </span>我的信用卡
         </div>
@@ -220,9 +220,9 @@
 <script>
     $(function () {
         $.ajax({
-            url:"http://www.bank.com/index.php/home/list",
+            url:"{:url('/home/list')}",
             success(e){
-                console.log(e)
+                //console.log(e)
                 if (e.code == 200){
                     $("#userName").html(e.data.username)
                     $(".username2").html(e.data.username)

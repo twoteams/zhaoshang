@@ -16,8 +16,9 @@ class Index extends BaseController
     }
 
     // 申请卡
-    public function create()
+    public function create($id)
     {
+        session('cf_id',$id);
         return View::fetch();
     }
 
