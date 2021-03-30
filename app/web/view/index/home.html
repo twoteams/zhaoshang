@@ -1,4 +1,4 @@
-<html lang="zh-cn">
+    <html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="Expires" content="0">
@@ -7,11 +7,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <title>首页-我的账户_二组银行信用卡会员中心200*60</title>
-    <link href="{__STATIC__}css/info.css" rel="stylesheet">
+    <link href="{__STATIC__}/css/info.css" rel="stylesheet">
+    <link rel="stylesheet" href="{__STATIC__}/layui/src/css/layui.css">
+    <script src="{__STATIC__}/layui/src/layui.js"></script>
 </head>
 
 <body>
-
+<div class="form" id="form" >
+    <p class="title mytitle">话费兑换</p>
+    <p>请输入手机号码:</p>
+    <div class="input">
+        <input type="text" class="in" id="phone">
+    </div>
+    <p>充值金额:</p>
+    <div class="input">
+        <input type="radio" class="radio" name="prepaid" value="10">
+        <span>10元</span>
+        <input type="radio" class="radio" name="prepaid" value="30">
+        <span>30元</span>
+        <input type="radio" class="radio" name="prepaid" value="50">
+        <span>50元</span>
+        <input type="radio" class="radio" name="prepaid" value="100">
+        <span>100元</span>
+    </div>
+    <p class="tip">1000积分可兑换10元话费</p>
+    <button class="btn" id="exchange">兑换</button>
+</div>
 <div class="header">
     <div class="content">
         <a href="http://creditcard.ecitic.com/" title="二组银行信用卡中心官网" target="_blank" class="logo-area">
@@ -56,7 +77,7 @@
             <a href="#" class="wdqy" target="_self">我的权益</a>
         </li>
         <li class="yahei" id="yahei06">
-            <a href="#" class="jffw" target="_self">积分服务</a>
+            <a href="#" class="jffw" target="_self" id="btn">积分服务</a>
         </li>
         <li class="yahei" id="yahei07">
             <a href="#" class="szgl" target="_self">设置管理</a>
@@ -73,6 +94,7 @@
 
         <a href="javascript:void(0);" target="_self" id="getCard">推荐办卡</a>
     </div>
+
     <div class="info">
         <div class="status" style="text-align: center;line-height: 120px;color: black">您办理的信用卡正在审核中...</div>
         <div class="if_con" style="display: none">
@@ -216,9 +238,55 @@
 </div>
 
 </body></html>
-<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script>
     $(function () {
+        layui.use('layer',function () {
+            $("#btn").click(function () {
+                $("#form").toggle();
+            })
+            $("#exchange").click(function () {
+                //获取要充值的额度
+                var recharge=$("input:radio:checked").val();
+                //获取要充值的手机号码
+                var phone=$("#phone").val();
+                //验证
+                if (phone==""){
+                    layer.msg('请填写您的手机号码哦！', {icon: 5});
+                    return false
+                }
+                if (phone.length!=11 || isNaN(phone) ){
+                    layer.msg('手机号码格式不正确！', {icon: 5});
+                    return false
+                }
+                //处理数据
+                var intergral=recharge*100
+                //发送ajax
+                $.ajax({
+                    type: "GET",
+                    url: "http://www.bank.com/home/intergral",
+                    data: {
+                        intergral:intergral
+                    },
+                    success: function(msg){
+                        if (msg.code==500){
+                            layer.msg('积分不足！', {icon: 5});
+                            return false;
+                        }
+                        if (msg.code==200){
+                            layer.msg('充值成功！', {icon: 1});
+
+                        }else {
+                            layer.msg('系统繁忙！', {icon: 5});
+                        }
+                    }
+                })
+
+            })
+        })
+
+    })
+
         $.ajax({
             url:"{:url('/home/list')}",
             success(e){
@@ -242,5 +310,4 @@
                 }
             }
         })
-    })
 </script>

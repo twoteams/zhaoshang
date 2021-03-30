@@ -2,10 +2,11 @@
 declare (strict_types = 1);
 
 namespace app\home\controller;
-
 use app\BaseController;
+use app\Request;
 use app\home\model\CardFace;
 use app\home\model\CardType;
+
 use think\App;
 use think\facade\Db;
 

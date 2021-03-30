@@ -17,5 +17,9 @@ Route::get('card_type', 'Index/card_type');
 //个人中心路由
 Route::get('list','Index/index');
 
+
 // 激活
 Route::get('info','Activation/index');
+
+Route::get('intergral','Intergral/intergral');
+
