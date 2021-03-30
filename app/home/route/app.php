@@ -16,4 +16,7 @@ Route::get('card_type', 'Index/card_type');
 
 //个人中心路由
 Route::get('list','Index/index');
-
+//登录的路由
+Route::post('login','Login/login');
+//退出的路由
+Route::get('logout','Login/logout');

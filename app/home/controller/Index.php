@@ -3,19 +3,23 @@ declare (strict_types = 1);
 
 namespace app\home\controller;
 
+use app\BaseController;
+use app\home\model\Card;
 use app\home\model\CardFace;
 use app\home\model\CardType;
+use app\home\model\User;
 use think\App;
-use think\Db;
+use think\facade\Db;
 
 
 class Index extends BaseController
 {
-    protected $user_id=1;
+    protected $user_id="";
     public function __construct(App $app)
     {
         parent::__construct($app);
-        $this->user_id = session('user')?session('user.id'):$this->user_id;
+        $data = session(config('admin.session_admin'));
+        $this->user_id = $data['id'];
     }
 
     public function card_face_list()
@@ -34,8 +38,9 @@ class Index extends BaseController
 
     public function index()
     {
-        $data = Db::table('user')->field('id,username,cstatus,fstatus')->find($this->user_id);
-        $card = Db::table('card')->field('num,fixprice')->find($this->user_id);
+        $data = User::field('id,username,cstatus,fstatus,ct_id')->find($this->user_id);
+        $data['ct_name'] = CardType::where('id',$data['ct_id'])->value('ct_name');
+        $card = Card::field('num,fixprice')->where('u_id',$this->user_id)->find();
 //        echo str_replace(substr($card['num'],4,-4),'****',$card['num']);die;
         $card['num' ] = str_replace(substr($card['num'],4,-4),'****',$card['num']);
         if (!empty($card)){

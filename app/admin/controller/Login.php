@@ -12,7 +12,7 @@ class Login extends Base
     public function initialize()
     {
         if ($this->is_Login()){
-            return $this->redirect('index');
+            return $this->redirect('/web/home');
         }
     }
 

@@ -12,7 +12,7 @@ use think\facade\Route;
 
 Route::get('index', 'Index/index');
 Route::get('create', 'Index/create');
-Route::get('login', 'Index/login');
+Route::get('login', 'Login/login');
 Route::get('activation', 'Index/activation');
 Route::get('home', 'Index/home');
 Route::get('search', 'Index/search');

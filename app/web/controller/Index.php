@@ -4,6 +4,7 @@ declare (strict_types = 1);
 namespace app\web\controller;
 
 use app\BaseController;
+use app\home\controller\Base;
 use think\Db;
 use think\facade\View;
 
@@ -30,13 +31,6 @@ class Index extends BaseController
         $data = Db::table('city')->where('pid',$id)->select();
         return json(['code'=>200,'msg'=>'success','data'=>$data]);
     }
-
-    // 登录
-    public function login()
-    {
-        return View::fetch();
-    }
-
     // 激活
     public function activation()
     {

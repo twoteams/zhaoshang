@@ -27,9 +27,4 @@ Route::group("AppRove",function () {
     //查看申请的所有信用卡信息
     Route::get('approve/index', 'index');
 })->ext('html')->pattern(['id'=>'\d+', 'name'=>'\w+']);
-//Route::group('AppRove', function () {
-//    Route::get('approve-index', 'AppRove/index');
-//})->prefix('AppRove/')->ext('html')->pattern(['id' => '\d+']);
-
-//})->ext('html')->pattern(['id'=>'\d+', 'name'=>'\w+']);
 Route::rule('', 'Address/index');
