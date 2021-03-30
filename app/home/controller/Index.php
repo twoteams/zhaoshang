@@ -9,7 +9,6 @@ use app\home\model\CardFace;
 use app\home\model\CardType;
 use app\home\model\User;
 use think\App;
-use think\facade\Db;
 
 
 class Index extends BaseController

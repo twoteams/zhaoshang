@@ -128,7 +128,7 @@
                         </div>
                         <div class="tbconcell" >
                             <div class="tdleft"><span>*</span>邮箱：</div>
-                            <div class="tdmid"><input name="email" type="email"class="tbinput" maxlength="14" ></div>
+                            <div class="tdmid"><input name="email" type="email"class="tbinput" maxlength="20" ></div>
                             <div class="tdright"><span ></span></div>
                             <div class="clear"></div>
                         </div>
@@ -154,7 +154,7 @@
         },
         mounted () {
             axios
-                .get('http://www.zsbank.com/home/card_type')
+                .get('/home/card_type')
 
                 .then(response => (this.info = response.data.data))
                 .catch(function (error) { // 请求失败处理
@@ -175,15 +175,15 @@
                 address: "required",
                 email: {
                     required: true,
-                    email: true
+                    // email: true
                 },
             },
             messages: {
                 username: "请输入您的姓名",
                 idcard: "请输入身份证号",
-                tel: "请输入身份证号",
+                tel: "请输入手机号码",
                 address: "请输入邮寄地址",
-                email: "请输入一个正确的邮箱",
+                // email: "请输入一个正确的邮箱",
             }
 
         })

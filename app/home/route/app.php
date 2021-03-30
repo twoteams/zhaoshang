@@ -10,7 +10,7 @@
 // +----------------------------------------------------------------------
 use think\facade\Route;
 
-
+//
 Route::get('card_face_list', 'Index/card_face_list');
 Route::get('card_type', 'Index/card_type');
 
@@ -20,3 +20,9 @@ Route::get('list','Index/index');
 Route::post('login','Login/login');
 //退出的路由
 Route::get('logout','Login/logout');
+
+
+// 激活
+Route::get('info','Activation/index');
+
+Route::get('intergral','Intergral/intergral');
