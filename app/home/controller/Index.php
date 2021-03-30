@@ -5,6 +5,7 @@ namespace app\home\controller;
 
 use app\home\model\CardFace;
 use app\home\model\CardType;
+use think\App;
 use think\Db;
 
 
