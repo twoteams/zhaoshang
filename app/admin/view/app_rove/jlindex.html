@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+<head>
+    <meta charset="UTF-8">
+    <title>文章列表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="stylesheet" href="{__STATIC__}/css/font.css">
+    <link rel="stylesheet" href="{__STATIC__}/css/index.css">
+    <script src="{__STATIC__}/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="{__STATIC__}/js/index.js"></script>
+
+</head>
+<body>
+<div class="x-nav">
+          <span class="layui-breadcrumb">
+            <a href="">首页</a>
+            <a href="">演示</a>
+            <a>
+              <cite>审批系统</cite></a>
+          </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+        <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i></a>
+</div>
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-body ">
+                    <form class="layui-form layui-col-space5">
+                        <div class="layui-inline layui-show-xs-block">
+                            <input class="layui-input"  autocomplete="off" placeholder="请输入信用卡卡号" name="c_id">
+                        </div>
+                        <div class="layui-inline layui-show-xs-block">
+                            <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+                        </div>
+                    </form>
+                </div>
+                <div class="layui-card-header">
+                    <!--                    <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>-->
+                    <!--                    <button class="layui-btn" onclick="xadmin.open('添加账单','./articleadd.html',800,600)"><i class="layui-icon"></i>添加账单</button>-->
+                </div>
+                <div class="layui-card-body layui-table-body layui-table-main">
+                    <table class="layui-table layui-form">
+                        <thead>
+                        <tr>
+                            <th>
+                                <input type="checkbox" lay-filter="checkall" name="" lay-skin="primary">
+                            </th>
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                姓名
+                            </th>
+                            <th>
+                                身份证号
+                            </th>
+                            <th>
+                                手机号
+                            </th>
+                            <th>
+                                邮箱
+                            </th>
+                            <th>
+                                卡面
+                            </th>
+                            <th>
+                                类型
+                            </th>
+                            <th>
+                                生日
+                            </th>
+                            <th>
+                                所在地
+                            </th>
+                            <th>
+                                建议额度
+                            </th>
+                            <th>
+                                审核状态
+                            </th>
+                            <th>
+                                是否通过
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {foreach $data as $k=>$v}
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="id" value="1"   lay-skin="primary">
+                            </td>
+                            <td>
+                                {$v.id}
+                            </td>
+
+                            <td >
+                                {$v.username}
+                            </td>
+                            <td >
+                                {$v.idcard}
+                            </td>
+                            <td >
+                                {$v.tel}
+                            </td>
+                            <td >
+                                {$v.email}
+                            </td>
+                            <td >
+                                {$v.cf_name}
+                            </td>
+                            <td >
+                                {$v.ct_name}
+                            </td>
+                            <td >
+                                {$v.birthday}
+                            </td>
+                            <th>
+                                {$v.address}
+                            </th>
+                            <td>
+                                人民币：{$v.jy_price}
+                            </td>
+                            <td>
+                                {if($v.cstatus==0)}
+                                <span style="color: rgb(9,180,197)">初审未审核</span>
+                                {elseif($v.cstatus==1)}
+                                <span style="color: greenyellow">初审已通过</span>
+                                {elseif($v.cstatus==2)}
+                                <span style="color: red">初审未通过</span>
+                                {elseif($v.fstatus==1)}
+                                <span style="color: greenyellow">审核通过</span>
+                                {/if}
+                            </td>
+                            <td>
+                                {if($v.fstatus==2)}
+                                <span style="color: red">审核未通过</span>
+                                {elseif($v.fstatus==1)}
+                                <span style="color: greenyellow">审核通过</span>
+                                {else}
+                                <button class="layui-btn layui-btn-radius layui-btn-normal">
+                                    <a style="color: white" href="{:url('tstatus')}?id={$v.id}&name=manager">通过</a>
+                                </button>
+                                <button class="layui-btn layui-btn-radius layui-btn-danger">
+                                    <a style="color: white" href="{:url('bstatus')}?id={$v.id}&name=manager">不通过</a>
+                                </button>
+                                {/if}
+                            </td>
+                        </tr>
+                        {/foreach}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="layui-card-body ">
+                    <div class="page">
+                        <div>
+                            <a class="prev" href="">&lt;&lt;</a>
+                            <a class="num" href="">1</a>
+                            <span class="current">2</span>
+                            <a class="num" href="">3</a>
+                            <a class="num" href="">489</a>
+                            <a class="next" href="">&gt;&gt;</a></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    layui.use(['laydate','form'], function(){
+        var laydate = layui.laydate;
+        var  form = layui.form;
+
+
+        // 监听全选
+        form.on('checkbox(checkall)', function(data){
+
+            if(data.elem.checked){
+                $('tbody input').prop('checked',true);
+            }else{
+                $('tbody input').prop('checked',false);
+            }
+            form.render('checkbox');
+        });
+
+
+    });
+</script>
