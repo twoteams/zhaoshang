@@ -5,10 +5,19 @@ namespace app\home\controller;
 
 use app\card\model\BankCards;
 use app\home\model\Card;
+use app\home\model\User;
 use think\Request;
 
 class Applyfor
 {
+    /**
+     *  获取卡类型ID
+     */
+    public function card_type_id($id)
+    {
+        print_r($id);
+    }
+
     /**
      * 保存新建的资源
      *
@@ -17,11 +26,20 @@ class Applyfor
      */
     public function save(Request $request)
     {
-        //$data = Card::with('carduser')->select()->toArray();
-        //$data = Card::carduser();
-        $data = Card::find(1);
-        return json($data->carduser);
-        print_r($data);
+        $data = $request->param();
+        try {
+            validate(\app\home\validate\Applyfor::class)->check($data);
+        } catch (ValidateException $e) {
+            // 验证失败 输出错误信息
+            return show(200,$e->getError());
+        }
+            $data['cf_id'] = session('cf_id');
+            $res = User::insert($data);
+        if ($res){
+            return show(200,'提交成功');
+        }else{
+            return show(200,'网络繁忙，请稍后再试');
+        }
     }
 
     /**

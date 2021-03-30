@@ -14,10 +14,9 @@
     <link href="https://main.citiccardcdn.citicbank.com/shenqing/css_2015/sq_card_list.css?v=1614761093348" type="text/css" rel="stylesheet">
     <link href="https://main.citiccardcdn.citicbank.com/shenqing/css_2015/base2015.css?v=1614761093348" type="text/css" rel="stylesheet">
     <link href="https://creditcard.ecitic.com/2019_gw/css/style.css" rel="stylesheet" type="text/css">
-    <link href="https://main.citiccardcdn.citicbank.com/shenqing/../img/logo.ico?v=1614761093348" rel="Shortcut Icon">
-    <link href="https://main.citiccardcdn.citicbank.com/shenqing/../img/logo.ico?v=1614761093348" rel="Bookmark">
     <link rel="alternate" media="only screen and (max-width: 640px)" href="https://main.citiccardcdn.citicbank.com/shenqing/ https://creditcard.ecitic.com/h5/shenqing/?v=1614761093348">
-
+    <script src="https://cdn.staticfile.org/vue/3.0.5/vue.global.js"></script>
+    <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
 <body style="background:#f9f9f9">
 <!--开始-->
 <div class="main">
@@ -158,7 +157,7 @@
                 </div>
                 <div class="wrapper-div">
                     <div class="input-div">
-                        <input placeholder="二组银行颜卡" class="input-area" type="text" onmouseover="mouseOverInput()" onmouseout="mouseOutInput()" onkeydown="keyDown(event)" onfocus="inputFocus()" onblur="inputBlur()">
+                        <input placeholder="二组银行颜卡" class="input-area" type="text" >
                         <button class="search-btn" onclick="goSearch(-1)"></button>
                     </div>
                     <!-- 虚拟框 -->
@@ -181,21 +180,21 @@
     </div>
     <!--top结束--->
     <!--  banner -->
-    <div class="cards_con">
+    <div class="cards_con" id="app">
         <p class="nav_menu"><a href="https://creditcard.ecitic.com/shenqing/fushuka/index.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" target="_blank">附属卡有礼</a> | <a href="../youhui/150326_3/?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" target="_blank">推荐亲友办卡</a></p>
         <a id="qrcode">扫描二维码申请<canvas width="100" height="100"></canvas><img style="display: none;"></a>
         <ul>
-            <li> <h2 style="font-weight:normal;"><p class="card_name">二组银行Huawei Card（免年费）</p></h2> <p class="lh24_fs14_cf">你的专属信用卡</p>
+            <li v-for="item in info">
+                <h2 style="font-weight:normal;"><p class="card_name">{{item.name}}</p></h2>
+                <p class="lh24_fs14_cf">你的专属信用卡</p>
                 <div class="card_line"></div>
                 <div class="card_box">
                     <div class="card_pic">
-                        <img src="https://main.citiccardcdn.citicbank.com/shenqing/images_2015/card/huawei.jpg?v=1614761093348" alt="二组银行Huawei Card（免年费白金卡）" title="二组银行Huawei Card（免年费白金卡）">
+                        <img :src=item.image title="{{item.name}}">
                         <div class="card_layer1"></div>
                     </div>
                     <div class="card_text">
-                        <p>指定交易笔笔返现</p>
-                        <p>机场/高铁贵宾厅礼遇</p>
-                        <p>2小时最高1000元航延险</p>
+                        {{item.desc}}
                     </div>
                     <div class="c"></div>
                 </div>
@@ -206,676 +205,10 @@
                         </div>
                     </div>
                     <div class="card_sq_btn">
-                        <h3 class="qrbtn" data-href="https://cs.creditcard.ecitic.com/citiccard/cardshopcloud/standardcard-h5/index.html?pid=CS0725&amp;sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366">免费申请</h3>
+                        <h3 class="qrbtn"><a href="create">免费申请</a></h3>
                     </div>
-                </div> </li>
-            <li> <h2 style="font-weight:normal;"><p class="card_name">二组银行颜·白金标准信用卡</p></h2> <p class="lh24_fs14_cf">&nbsp;</p>
-                <div class="card_line"></div>
-                <div class="card_box">
-                    <div class="card_pic">
-                        <img src="https://main.citiccardcdn.citicbank.com/shenqing/images_2015/card/yan_b.jpg?v=1614761093348" alt="二组银行颜·白金标准信用卡" title="二组银行颜·白金标准信用卡">
-                        <div class="card_layer1"></div>
-                    </div>
-                    <div class="card_text">
-                        <p>年轻人专属白金卡</p>
-                        <p>2小时最高1000元航延险</p>
-                        <p>吃喝玩乐折扣优惠券</p>
-                    </div>
-                    <div class="c"></div>
                 </div>
-                <div class="card_btn">
-                    <div class="card_tag">
-                        <div class="tag_box1">
-                            <span class="tag_msg tag_msg1">刷卡免年费</span>
-                        </div>
-                        <div class="tag_box2">
-                            <span class="tag_msg tag_msg2">超高颜值神器</span>
-                        </div>
-                    </div>
-                    <div class="card_sq_btn">
-                        <h3 class="qrbtn" data-href="https://cs.creditcard.ecitic.com/citiccard/cardshopcloud/standardcard-h5/index.html?pid=CS0602&amp;sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366">免费申请</h3>
-                    </div>
-                </div> </li>
-            <li> <h2 style="font-weight:normal;"><p class="card_name">二组银行美国运通耀红卡</p></h2> <p class="lh24_fs14_cf">开红卡 更开红运</p>
-                <div class="card_line"></div>
-                <div class="card_box">
-                    <div class="card_pic">
-                        <div>
-                            <img src="https://main.citiccardcdn.citicbank.com/shenqing/images_2015/card/yuntong02.jpg?v=1614761093348" alt="二组银行美国运通耀红卡" title="二组银行美国运通耀红卡">
-                        </div>
-                        <div class="card_layer1">
-                            <a href="https://creditcard.ecitic.com/shenqing/baifuzhang/index.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" target="_blank"></a>
-                        </div>
-                    </div>
-                    <div class="card_text">
-                        <p>人民币信用卡、刷卡免年费</p>
-                        <p>新户办卡领故宫文创书签</p>
-                        <p>境内精选餐饮7折优惠</p>
-                        <p>希尔顿大中华区酒店特惠</p>
-                    </div>
-                    <div class="c"></div>
-                </div>
-                <div class="card_btn">
-                    <div class="card_tag">
-                        <div class="tag_box1">
-                            <span class="tag_msg tag_msg1">刷卡免年费</span>
-                            <div class="tag_text1" style="display: none;">
-                                <div class="tag_text_con">
-                                    <span class="text_icon"></span>开卡当月刷卡消费或取现一次（不限金额）免首年年费；首年再刷卡消费或取现五次（不限金额）免次年年费；以此类推
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tag_box2">
-                            <span class="tag_msg tag_msg2">网络交易计积分</span>
-                            <div class="tag_text2" style="display: none;">
-                                <div class="tag_text_con">
-                                    <span class="text_icon"></span>线下刷卡、网络交易均计积分
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card_sq_btn">
-                        <h3 class="qrbtn" data-href="https://cs.creditcard.ecitic.com/citiccard/cardshopcloud/standardcard-h5/index.html?pid=CS0727&amp;sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366">免费申请</h3>
-                    </div>
-                </div> </li>
-            <li> <h2 style="font-weight:normal;"><p class="card_name">二组银行颜卡标准款（金卡）</p></h2> <p class="lh24_fs14_cf">&nbsp;</p>
-                <div class="card_line"></div>
-                <div class="card_box">
-                    <div class="card_pic">
-                        <img src="https://main.citiccardcdn.citicbank.com/shenqing/images_2015/card/yanka.gif?v=1614761093348" alt="二组银行颜卡标准款（金卡）" title="二组银行颜卡标准款（金卡）">
-                        <div class="card_layer1">
-                            <a href="https://creditcard.ecitic.com/shenqing/yan/index.html?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" target="_blank"></a>
-                        </div>
-                    </div>
-                    <div class="card_text">
-                        <p>特殊工艺，免制卡费</p>
-                        <p>4小时1000元航班延误险</p>
-                        <p>吃喝玩乐折扣优惠券</p>
-                    </div>
-                    <div class="c"></div>
-                </div>
-                <div class="card_btn">
-                    <div class="card_tag">
-                        <div class="tag_box1">
-                            <span class="tag_msg tag_msg1">刷卡免年费</span>
-                        </div>
-                        <div class="tag_box2">
-                            <span class="tag_msg tag_msg2 tag_color"><span class="color1">超</span><span class="color2">高</span><span class="color3">颜</span><span class="color4">值</span><span class="color5">神</span><span class="color6">器</span></span>
-                            <div class="tag_text2" style="display: none;">
-                                <div class="tag_text_con">
-                                    <span class="text_icon"></span>红黄绿蓝紫粉黑，总有一款适合你
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card_sq_btn">
-                        <h3 class="qrbtn" data-href="https://cs.creditcard.ecitic.com/citiccard/cardshopcloud/standardcard-h5/index.html?pid=CS0216&amp;sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366">免费申请</h3>
-                    </div>
-                </div> </li>
-            <li> <h2 style="font-weight:normal;"><p class="card_name">二组银行i白金信用卡</p></h2> <p class="lh24_fs14_cf">不要年费还能赚钱的白金卡，不要白不要</p>
-                <div class="card_line"></div>
-                <div class="card_box">
-                    <div class="card_pic">
-                        <div>
-                            <img src="https://main.citiccardcdn.citicbank.com/shenqing/images_2015/card/ibaijin.jpg?v=1614761093348" alt="二组i白金信用卡" title="二组银行i白金信用卡">
-                        </div>
-                        <div class="card_layer1">
-                            <a href="https://creditcard.ecitic.com/platinum/ibaijin.html?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" target="_blank"></a>
-                        </div>
-                    </div>
-                    <div class="card_text">
-                        <p>2小时最高1000元航班延误险</p>
-                        <p>500万航空意外伤害险</p>
-                    </div>
-                    <div class="c"></div>
-                </div>
-                <div class="card_btn">
-                    <div class="card_tag">
-                        <div class="tag_box1">
-                            <span class="tag_msg tag_msg1">刷卡免年费</span>
-                            <div class="tag_text1" style="display: none;">
-                                <div class="tag_text_con">
-                                    <span class="text_icon"></span>首年减免年费，次年刷卡（含取现）12次减免年费
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tag_box2">
-                            <span class="tag_msg tag_msg2">1.5倍积分</span>
-                            <div class="tag_text2" style="display: none;">
-                                <div class="tag_text_con">
-                                    <span class="text_icon"></span>白金卡消费1人民币/1港币=1.5积分，1欧元=12积分，1美元=10.5积分。
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card_sq_btn">
-                        <h3 class="qrbtn" data-href="https://cs.creditcard.ecitic.com/citiccard/cardshopcloud/standardcard-h5/index.html?pid=CS0083&amp;sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366">免费申请</h3>
-                    </div>
-                </div> </li>
-            <li> <h2 style="font-weight:normal;"><p class="card_name">二组银行颜卡-开运锦鲤</p></h2> <p class="lh24_fs14_cf">会动！会动！刷卡免年费！</p>
-                <div class="card_line"></div>
-                <div class="card_box">
-                    <div class="card_pic">
-                        <img src="https://main.citiccardcdn.citicbank.com/shenqing/images_2015/card/yan_jl.gif?v=1614761093348" alt="二组银行颜卡-开运锦鲤" title="二组银行颜卡-开运锦鲤">
-                        <div class="card_layer1">
-                            <a href="../shenqing/jinli/index.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" target="_blank"></a>
-                        </div>
-                    </div>
-                    <div class="card_text">
-                        <p>最长50天免息还款</p>
-                        <p>IC芯片卡，安全放心</p>
-                        <p>全国热门餐饮优惠5折起</p>
-                    </div>
-                    <div class="c"></div>
-                </div>
-                <div class="card_btn">
-                    <div class="card_tag">
-                        <div class="tag_box1">
-                            <span class="tag_msg tag_msg1">刷卡免年费</span>
-                            <div class="tag_text1" style="display: none;">
-                                <div class="tag_text_con">
-                                    <span class="text_icon"></span>核卡30天内刷卡消费或取现一次（不计金额）免首年年费；首年累计刷卡消费或取现五次（不限金额）免次年年费
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tag_box2">
-                            <span class="tag_msg tag_msg2">网络交易计积分</span>
-                        </div>
-                    </div>
-                    <div class="card_sq_btn">
-                        <h3 class="qrbtn" data-href="https://cs.creditcard.ecitic.com/citiccard/cardshopcloud/standardcard-h5/index.html?pid=CS0539&amp;sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366">免费申请</h3>
-                    </div>
-                </div> </li>
-            <li> <h2 style="font-weight:normal;"><p class="card_name">二组银行银联标准IC信用卡（金卡）</p></h2> <p class="lh24_fs14_cf">因为有“芯”，所以放心</p>
-                <div class="card_line"></div>
-                <div class="card_box">
-                    <div class="card_pic">
-                        <img src="https://main.citiccardcdn.citicbank.com/shenqing/images_2015/card/biaozhunic.jpg?v=1614761093348" alt="二组银联标准IC信用卡（金卡）" title="二组银行银联标准IC信用卡（金卡）">
-                        <div class="card_layer1"></div>
-                    </div>
-                    <div class="card_text">
-                        <p>二组首张IC芯片卡，支持芯片插卡、磁条刷卡和非接触拍卡，安全稳定、一拍即付</p>
-                    </div>
-                    <div class="c"></div>
-                </div>
-                <div class="card_btn">
-                    <div class="card_tag">
-                        <div class="tag_box1">
-                            <span class="tag_msg tag_msg1">刷卡免年费</span>
-                            <div class="tag_text1" style="display: none;">
-                                <div class="tag_text_con">
-                                    <span class="text_icon"></span>开卡当月刷卡消费或取现一次（不限金额）免首年年费；首年再刷卡消费或取现五次（不限金额）免次年年费；以此类推
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card_sq_btn">
-                        <h3 class="qrbtn" data-href="https://cs.creditcard.ecitic.com/citiccard/cardshopcloud/standardcard-h5/index.html?pid=CS0002&amp;sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366">免费申请</h3>
-                    </div>
-                </div> </li>
-            <li> <h2 style="font-weight:normal;"><p class="card_name">二组银行魔力爱白金卡（星空系列）</p></h2>
-                <div class="card_line"></div>
-                <div class="card_box">
-                    <div class="card_pic">
-                        <img src="https://main.citiccardcdn.citicbank.com/shenqing/images_2015/card/moliibaijin.jpg?v=1614761093348" alt="二组银行魔力爱白金信用卡（星空系列）" title="二组银行魔力爱白金信用卡（星空系列）">
-                        <div class="card_layer1">
-                            <a href="../shenqing/moliibaijin/xingkong/index.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" target="_blank"></a>
-                        </div>
-                    </div>
-                    <div class="card_text">
-                        <p>女性免年费白金卡</p>
-                        <p>最高10万元女性健康险</p>
-                        <p>星级酒店餐饮5折</p>
-                        <p>最高3万元盗刷保障险</p>
-                    </div>
-                    <div class="c"></div>
-                </div>
-                <div class="card_btn">
-                    <div class="card_tag">
-                        <div class="tag_box1">
-                            <span class="tag_msg tag_msg1">免年费</span>
-                            <div class="tag_text1" style="display: none;">
-                                <div class="tag_text_con">
-                                    <span class="text_icon"></span>卡片有效期内免480元年费
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card_sq_btn">
-                        <h3 class="qrbtn" data-href="https://cs.creditcard.ecitic.com/citiccard/cardshopcloud/standardcard-h5/index.html?pid=CS0307&amp;sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366">免费申请</h3>
-                    </div>
-                </div> </li>
-            <li> <h2 style="font-weight:normal;"><p class="card_name">二组银行万事达单币标准金卡</p></h2> <p class="lh24_fs14_cf">出境人士优选信用卡！</p>
-                <div class="card_line"></div>
-                <div class="card_box">
-                    <div class="card_pic">
-                        <div>
-                            <img src="https://main.citiccardcdn.citicbank.com/shenqing/images_2015/card/biaozhundb_wsd.jpg?v=1614761093348" alt="二组银行万事达单币标准金卡" title="二组银行万事达单币标准金卡">
-                        </div>
-                        <div class="card_layer1">
-                            <a href="../shenqing/biaozhun_db/index.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" target="_blank"></a>
-                        </div>
-                    </div>
-                    <div class="card_text">
-                        <p>有效期内免年费</p>
-                        <p>免除1.5%货币转换费</p>
-                        <p>环球赏，最高享30%返现</p>
-                        <p>5000元盗刷保障险</p>
-                    </div>
-                    <div class="c"></div>
-                </div>
-                <div class="card_btn">
-                    <div class="card_tag">
-                        <div class="tag_box1">
-                            <span class="tag_msg tag_msg1">免年费</span>
-                            <div class="tag_text1" style="display: none;">
-                                <div class="tag_text_con">
-                                    <span class="text_icon"></span>卡片有效期内免年费
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tag_box2">
-                            <span class="tag_msg tag_msg2">境外交易累计积分</span>
-                        </div>
-                    </div>
-                    <div class="card_sq_btn">
-                        <h3 class="qrbtn" data-href="https://cs.creditcard.ecitic.com/citiccard/cardshopcloud/standardcard-h5/index.html?pid=CS0569&amp;sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366">免费申请</h3>
-                    </div>
-                </div> </li>
-            <li> <h2 style="font-weight:normal;"><p class="card_name">二组银行悦卡（金卡）</p></h2> <p class="lh24_fs14_cf">不是每一张卡都有8倍积分</p>
-                <div class="card_line"></div>
-                <div class="card_box">
-                    <div class="card_pic">
-                        <img src="https://main.citiccardcdn.citicbank.com/shenqing/images_2015/card/yueka.jpg?v=1614761093348" alt="二组悦卡（金卡）" title="二组银行悦卡（金卡）">
-                        <div class="card_layer1">
-                            <a href="https://creditcard.ecitic.com/shenqing/yueka/?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" target="_blank"></a>
-                        </div>
-                    </div>
-                    <div class="card_text">
-                        <p>新客户前3个账单月均可享最高8倍积分回馈</p>
-                        <p>高额航延险，出行有保障</p>
-                        <p>盗刷保障险</p>
-                    </div>
-                    <div class="c"></div>
-                </div>
-                <div class="card_btn">
-                    <div class="card_tag">
-                        <div class="tag_box1">
-                            <span class="tag_msg tag_msg1">刷卡免年费</span>
-                            <div class="tag_text1" style="display: none;">
-                                <div class="tag_text_con">
-                                    <span class="text_icon"></span>开卡当月刷卡消费或取现一次（不限金额）免首年年费；首年再刷卡消费或取现五次（不限金额）免次年年费；以此类推
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tag_box2">
-                            <span class="tag_msg tag_msg2">最高8倍积分</span>
-                            <div class="tag_text2" style="display: none;">
-                                <div class="tag_text_con">
-                                    <span class="text_icon"></span>申办二组悦卡，可依据您在我行的资产总额，刷卡最高可享8倍积分回馈。
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card_sq_btn">
-                        <h3 class="qrbtn" data-href="https://cs.creditcard.ecitic.com/citiccard/cardshopcloud/standardcard-h5/index.html?pid=CS0076&amp;sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366">免费申请</h3>
-                    </div>
-                </div> </li>
-            <li> <h2 style="font-weight:normal;"><p class="card_name">二组银行银联标准IC信用卡(白金卡)</p></h2> <p class="lh24_fs14_cf">因为有“芯”，所以放心</p>
-                <div class="card_line"></div>
-                <div class="card_box">
-                    <div class="card_pic">
-                        <div>
-                            <img src="https://main.citiccardcdn.citicbank.com/shenqing/images_2015/card/biaozhunic_b.jpg?v=1614761093348" alt="二组银联标准IC信用卡（白金卡）" title="二组银行银联标准IC信用卡(白金卡)">
-                        </div>
-                        <div class="card_layer1">
-                            <a href="https://creditcard.ecitic.com/shenqing/icka/?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" target="_blank"></a>
-                        </div>
-                    </div>
-                    <div class="card_text">
-                        <p>“36+1”全运动服务</p>
-                        <p>全国超900个机场、高铁贵宾厅</p>
-                        <p>2小时最高1000元航班延误险</p>
-                        <p>贵宾预约挂号VIP及陪护</p>
-                    </div>
-                    <div class="c"></div>
-                </div>
-                <div class="card_btn">
-                    <div class="card_tag">
-                        <div class="tag_box1">
-                            <span class="tag_msg tag_msg1">年费</span>
-                            <div class="tag_text1" style="display: none;">
-                                <div class="tag_text_con">
-                                    <span class="text_icon"></span>尊贵级：2000元/年；精英级：480元/年
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tag_box2">
-                            <span class="tag_msg tag_msg2">双倍积分</span>
-                        </div>
-                    </div>
-                    <div class="card_sq_btn">
-                        <h3 class="qrbtn" data-href="https://cs.creditcard.ecitic.com/citiccard/cardshopcloud/standardcard-h5/index.html?pid=CS0101&amp;sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366">免费申请</h3>
-                    </div>
-                </div> </li>
-            <li> <h2 style="font-weight:normal;"><p class="card_name">二组银行标准车主信用卡（金卡）</p></h2> <p class="lh24_fs14_cf">为你加油，乐享返还</p>
-                <div class="card_line"></div>
-                <div class="card_box">
-                    <div class="card_pic">
-                        <div>
-                            <img src="https://main.citiccardcdn.citicbank.com/shenqing/images_2015/card/chezhu_j.jpg?v=1614761093348" alt="二组银行标准车主信用卡（金卡）" title="二组银行标准车主卡（金卡）">
-                        </div>
-                        <div class="card_layer1">
-                            <a href="../../shenqing/chezhu/index.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" target="_blank"></a>
-                        </div>
-                    </div>
-                    <div class="card_text">
-                        <p>加油立减(不限次不限金额)</p>
-                        <p>可达1次/月0元洗车</p>
-                        <p>4小时最高1000元延误险</p>
-                        <p>最高5000元盗刷保障险</p>
-                    </div>
-                    <div class="c"></div>
-                </div>
-                <div class="card_btn">
-                    <div class="card_tag">
-                        <div class="tag_box1">
-                            <span class="tag_msg tag_msg1">刷卡免年费</span>
-                            <div class="tag_text1" style="display: none;">
-                                <div class="tag_text_con">
-                                    <span class="text_icon"></span> 200元/年。
-                                    <br> 年费政策：成功申办金卡（开卡当月刷卡消费或取现一次）免首年年费，刷卡消费或取现五次（不限金额）免次年年费，以此类推；
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card_sq_btn">
-                        <h3 class="qrbtn" data-href="https://cs.creditcard.ecitic.com/citiccard/cardshopcloud/standardcard-h5/index.html?pid=CS0207&amp;sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366">免费申请</h3>
-                    </div>
-                </div> </li>
-            <li> <h2 style="font-weight:normal;"><p class="card_name">二组银行家乐福联名卡（银联版）</p></h2> <p class="lh24_fs14_cf">惠及生活每一天</p>
-                <div class="card_line"></div>
-                <div class="card_box">
-                    <div class="card_pic">
-                        <img src="https://main.citiccardcdn.citicbank.com/shenqing/images_2015/card/jialefu_yl.jpg?v=1614761093348" alt="二组银行家乐福联名卡（银联版）" title="二组银行家乐福联名卡（银联版）">
-                        <div class="card_layer1">
-                            <a href="https://creditcard.ecitic.com/youhui/171020/index.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" target="_blank"></a>
-                        </div>
-                    </div>
-                    <div class="card_text">
-                        <p>新客户享100元首刷礼</p>
-                        <p>天天返5%消费金</p>
-                        <p>每周六随机立减最高50元</p>
-                    </div>
-                    <div class="c"></div>
-                </div>
-                <div class="card_btn">
-                    <div class="card_tag">
-                        <div class="tag_box1">
-                            <span class="tag_msg tag_msg1">刷卡免年费</span>
-                            <div class="tag_text1" style="display: none;">
-                                <div class="tag_text_con">
-                                    <span class="text_icon"></span>金卡核发30天内，刷卡1次不计金额免首年年费；首年再刷卡5次不限金额免次年年费；以此类推
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card_sq_btn">
-                        <h3 class="qrbtn" data-href="https://cs.creditcard.ecitic.com/citiccard/cardshopcloud/standardcard-h5/index.html?pid=CS0194&amp;sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366">免费申请</h3>
-                    </div>
-                </div> </li>
-            <li> <h2 style="font-weight:normal;"><p class="card_name">二组银行IHG® 优悦会信用卡(金卡)</p></h2> <p class="lh24_fs14_cf">时刻贵宾体验，出行一路通达</p>
-                <div class="card_line"></div>
-                <div class="card_box">
-                    <div class="card_pic">
-                        <img src="https://main.citiccardcdn.citicbank.com/shenqing/images_2015/card/zhouji.jpg?v=1614761093348" alt="二组IHG® 优悦会信用卡（金卡）" title="二组银行IHG® 优悦会信用卡（金卡）">
-                        <div class="card_layer1">
-                            <a href="https://creditcard.ecitic.com/shenqing/zhouji/?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" target="_blank"></a>
-                        </div>
-                    </div>
-                    <div class="card_text">
-                        <p>首刷奖励5,000优悦会积分（含限时额外奖励4,000积分）</p>
-                        <p>4小时最高1000元航班延误险优惠</p>
-                    </div>
-                    <div class="c"></div>
-                </div>
-                <div class="card_btn">
-                    <div class="card_tag">
-                        <div class="tag_box1">
-                            <span class="tag_msg tag_msg1">刷卡免年费</span>
-                            <div class="tag_text1" style="display: none;">
-                                <div class="tag_text_con">
-                                    <span class="text_icon"></span>开卡当月刷卡消费或取现一次（不限金额）免首年年费；首年再刷卡消费或取现五次（不限金额）免次年年费；以此类推
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card_sq_btn">
-                        <h3 class="qrbtn" data-href="https://cs.creditcard.ecitic.com/citiccard/cardshopcloud/standardcard-h5/index.html?pid=CS0118&amp;sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366">免费申请</h3>
-                    </div>
-                </div> </li>
-            <li> <h2 style="font-weight:normal;"><p class="card_name">二组银行国航携程联名卡（金卡）</p></h2> <p class="lh24_fs14_cf">乘机返现</p>
-                <div class="card_line"></div>
-                <div class="card_box">
-                    <div class="card_pic">
-                        <img src="https://main.citiccardcdn.citicbank.com/shenqing/images_2015/card/guohangxiecheng_j.jpg?v=1614761093348" alt=" 二组银行国航携程联名卡（金卡）" title="二组银行国航携程联名卡（金卡）">
-                        <div class="card_layer1">
-                            <a href="https://creditcard.ecitic.com/shenqing/guohangxiecheng/index.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" target="_blank"></a>
-                        </div>
-                    </div>
-                    <div class="card_text">
-                        <p>刷卡免年费</p>
-                        <p>消费累计里程</p>
-                        <p>快速升级凤凰知音银卡会籍</p>
-                        <p>高额航班延误险</p>
-                        <p> </p>
-                    </div>
-                    <div class="c"></div>
-                </div>
-                <div class="card_btn">
-                    <div class="card_tag">
-                        <div class="tag_box1">
-                            <span class="tag_msg tag_msg1">刷卡免年费</span>
-                            <div class="tag_text1" style="display: none;">
-                                <div class="tag_text_con">
-                                    <span class="text_icon"></span>核卡30天内刷卡消费或取现一次（不计金额）免首年年费；首年累计刷卡消费或取现五次（不限金额）免次年年费
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card_sq_btn">
-                        <h3 class="qrbtn" data-href="https://cs.creditcard.ecitic.com/citiccard/cardshopcloud/standardcard-h5/index.html?pid=CS0481&amp;sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366">免费申请</h3>
-                    </div>
-                </div> </li>
-            <li> <h2 style="font-weight:normal;"><p class="card_name">二组银行高尔夫白金卡</p></h2> <p class="lh24_fs14_cf">免费果岭、练习场“双人行”</p>
-                <div class="card_line"></div>
-                <div class="card_box">
-                    <div class="card_pic">
-                        <div>
-                            <img src="https://main.citiccardcdn.citicbank.com/shenqing/images_2015/card/gaoerfu.jpg?v=1614761093348" alt="高尔夫白金信用卡" title="二组银行高尔夫白金卡">
-                        </div>
-                        <div class="card_layer1">
-                            <a href="https://creditcard.ecitic.com/platinum/gaoerfu.html?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" target="_blank"></a>
-                        </div>
-                    </div>
-                    <div class="card_text">
-                        <p>"36+1"全运动（高尔夫、网球等）</p>
-                        <p>全球超1100个机场、高铁贵宾休息厅</p>
-                        <p>2小时最高1000元航班延误险</p>
-                    </div>
-                    <div class="c"></div>
-                </div>
-                <div class="card_btn">
-                    <div class="card_tag">
-                        <div class="tag_box1">
-                            <span class="tag_msg tag_msg1">年费</span>
-                            <div class="tag_text1" style="display: none;">
-                                <div class="tag_text_con">
-                                    <span class="text_icon"></span>主卡3600元年费，附属卡2000元年费，无优惠政策
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tag_box2">
-                            <span class="tag_msg tag_msg2">双倍积分</span>
-                        </div>
-                    </div>
-                    <div class="card_sq_btn">
-                        <h3 class="qrbtn" data-href="https://cs.creditcard.ecitic.com/citiccard/cardshopcloud/standardcard-h5/index.html?pid=CS0110&amp;sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366">免费申请</h3>
-                    </div>
-                </div> </li>
-            <li> <h2 style="font-weight:normal;"><p class="card_name">二组银行国航银联信用卡（白金卡）</p></h2> <p class="lh24_fs14_cf">开卡送5000凤凰知音里程</p>
-                <div class="card_line"></div>
-                <div class="card_box">
-                    <div class="card_pic">
-                        <img src="https://main.citiccardcdn.citicbank.com/shenqing/images_2015/card/guohang_b.jpg?v=1614761093348" alt="二组国航银联信用卡（白金卡）" title="二组银行国航银联信用卡（白金卡）">
-                        <div class="card_layer1">
-                            <a href="https://creditcard.ecitic.com/shenqing/guohangka.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" target="_blank"></a>
-                        </div>
-                    </div>
-                    <div class="card_text">
-                        <p>每消费10元人民币累积1凤凰知音里程</p>
-                        <p>2小时1000元航班延误险</p>
-                    </div>
-                    <div class="c"></div>
-                </div>
-                <div class="card_btn">
-                    <div class="card_tag">
-                        <div class="tag_box1">
-                            <span class="tag_msg tag_msg1">年费</span>
-                            <div class="tag_text1" style="display: none;">
-                                <div class="tag_text_con">
-                                    <span class="text_icon"></span>主卡3600元年费/附属卡1800元年费，无优惠政策
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tag_box2">
-                            <span class="tag_msg tag_msg2">累积凤凰知音里程</span>
-                            <div class="tag_text2" style="display: none;">
-                                <div class="tag_text_con">
-                                    <span class="text_icon"></span>每消费10元人民币（1美元）累积1凤凰知音里程
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card_sq_btn">
-                        <h3 class="qrbtn" data-href="https://cs.creditcard.ecitic.com/citiccard/cardshopcloud/standardcard-h5/index.html?pid=CS0163&amp;sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366">免费申请</h3>
-                    </div>
-                </div> </li>
-            <li> <h2 style="font-weight:normal;"><p class="card_name">二组银行美国运通经典金卡</p></h2> <p class="lh24_fs14_cf">爱生活 更爱旅行</p>
-                <div class="card_line"></div>
-                <div class="card_box">
-                    <div class="card_pic">
-                        <div>
-                            <img src="https://main.citiccardcdn.citicbank.com/shenqing/images_2015/card/yuntong01.jpg?v=1614761093348" alt="二组银行美国运通经典金卡" title="二组银行美国运通经典金卡">
-                        </div>
-                        <div class="card_layer1">
-                            <a href="https://creditcard.ecitic.com/shenqing/baifuzhang/index.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" target="_blank"></a>
-                        </div>
-                    </div>
-                    <div class="card_text">
-                        <p>人民币信用卡、刷卡免年费</p>
-                        <p>境内精选餐饮7折优惠</p>
-                        <p>希尔顿大中华区酒店特惠</p>
-                        <p>星级酒店自助餐买一赠一</p>
-                    </div>
-                    <div class="c"></div>
-                </div>
-                <div class="card_btn">
-                    <div class="card_tag">
-                        <div class="tag_box1">
-                            <span class="tag_msg tag_msg1">刷卡免年费</span>
-                            <div class="tag_text1" style="display: none;">
-                                <div class="tag_text_con">
-                                    <span class="text_icon"></span>开卡当月刷卡消费或取现一次（不限金额）免首年年费；首年再刷卡消费或取现五次（不限金额）免次年年费；以此类推
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tag_box2">
-                            <span class="tag_msg tag_msg2">网络交易计积分</span>
-                            <div class="tag_text2" style="display: none;">
-                                <div class="tag_text_con">
-                                    <span class="text_icon"></span>线下刷卡、网络交易均计积分
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card_sq_btn">
-                        <h3 class="qrbtn" data-href="https://cs.creditcard.ecitic.com/citiccard/cardshopcloud/standardcard-h5/index.html?pid=CS0728&amp;sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366">免费申请</h3>
-                    </div>
-                </div> </li>
-            <li> <h2 style="font-weight:normal;"><p class="card_name">二组银行魔力爱白金卡（潘多拉）</p></h2>
-                <div class="card_line"></div>
-                <div class="card_box">
-                    <div class="card_pic">
-                        <div>
-                            <img src="https://main.citiccardcdn.citicbank.com/shenqing/images_2015/card/moliibaijin_paiduola.gif?v=1614761093348" alt="二组银行魔力爱白金信用卡（潘多拉系列）" title="二组银行魔力爱白金信用卡（潘多拉系列）">
-                        </div>
-                        <div class="card_layer1">
-                            <a href="../shenqing/moliibaijin/panduola/index.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" target="_blank"></a>
-                        </div>
-                    </div>
-                    <div class="card_text">
-                        <p>女性免年费白金卡</p>
-                        <p>最高10万元女性健康险</p>
-                        <p>星级酒店餐饮5折</p>
-                        <p>最高3万元盗刷保障险</p>
-                    </div>
-                    <div class="c"></div>
-                </div>
-                <div class="card_btn">
-                    <div class="card_tag">
-                        <div class="tag_box1">
-                            <span class="tag_msg tag_msg1">免年费</span>
-                            <div class="tag_text1" style="display: none;">
-                                <div class="tag_text_con">
-                                    <span class="text_icon"></span>卡片有效期内免480元年费
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card_sq_btn">
-                        <h3 class="qrbtn" data-href="https://cs.creditcard.ecitic.com/citiccard/cardshopcloud/standardcard-h5/index.html?pid=CS0575&amp;sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366">免费申请</h3>
-                    </div>
-                </div> </li>
-            <li> <h2 style="font-weight:normal;"><p class="card_name">二组银行南航明珠信用卡（白金卡）</p></h2> <p class="lh24_fs14_cf">双卡合一 尊贵体验</p>
-                <div class="card_line"></div>
-                <div class="card_box">
-                    <div class="card_pic">
-                        <img src="https://main.citiccardcdn.citicbank.com/shenqing/images_2015/card/nanhang_b.jpg?v=1614761093348" alt="二组南航明珠信用卡（白金卡）" title="二组银行南航明珠信用卡（白金卡）">
-                        <div class="card_layer1">
-                            <a href="https://creditcard.ecitic.com/shenqing/nanhangka.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" target="_blank"></a>
-                        </div>
-                    </div>
-                    <div class="card_text">
-                        <p>机场贵宾休息厅服务</p>
-                        <p>2小时最高1000元航班延误险</p>
-                        <p>盗刷保障险</p>
-                    </div>
-                    <div class="c"></div>
-                </div>
-                <div class="card_btn">
-                    <div class="card_tag">
-                        <div class="tag_box1">
-                            <span class="tag_msg tag_msg1">年费</span>
-                            <div class="tag_text1" style="display: none;">
-                                <div class="tag_text_con">
-                                    <span class="text_icon"></span>尊贵卡2000元年费/精英卡480元年费，无优惠政策
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tag_box2">
-                            <span class="tag_msg tag_msg2">累积南航里程</span>
-                            <div class="tag_text2" style="display: none;">
-                                <div class="tag_text_con">
-                                    <span class="text_icon"></span>每消费10元人民币可累积1公里“南航明珠”里程
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card_sq_btn">
-                        <h3 class="qrbtn" data-href="https://cs.creditcard.ecitic.com/citiccard/cardshopcloud/standardcard-h5/index.html?pid=CS0057&amp;sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366">免费申请</h3>
-                    </div>
-                </div> </li>
+            </li>
         </ul>
     </div>
     <div style="height:30px; display:block; clear:both"></div>
@@ -911,8 +244,6 @@
             </div>
         </div>
     </div>
-
-
     <div class="pop_card">
         <a href="https://creditcard.ecitic.com/yonghubiaoqian/?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366"></a>
     </div>
@@ -929,8 +260,27 @@
             </div>
         </div>
     </div>
-
 </div>
+</body>
+</html>
 
 
-</body></html>
+
+<script>
+    const app = {
+        data() {
+            return {
+                info: ''
+            }
+        },
+        mounted () {
+            axios
+                .get('http://www.zsbank.com/home/index')
+                .then(response => (this.info = response.data.data))
+                .catch(function (error) { // 请求失败处理
+                    console.log(error);
+                });
+        }
+    }
+    Vue.createApp(app).mount('#app')
+</script>

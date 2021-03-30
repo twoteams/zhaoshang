@@ -10,7 +10,10 @@
 // +----------------------------------------------------------------------
 use think\facade\Route;
 
-Route::get('index', 'Index/index');
+
+Route::get('card_face_list', 'Index/card_face_list');
 Route::get('card_type', 'Index/card_type');
 
+//个人中心路由
+Route::get('list','Index/index');
 

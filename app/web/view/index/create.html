@@ -8,6 +8,8 @@
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/vue/3.0.5/vue.global.js"></script>
     <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
     <style>
         .images{
             width: 123px;
@@ -75,7 +77,7 @@
                     <div class="tdmid" style="font-weight:bold; color:#333;"><span id="lbCardName">宝可梦粉丝卡家族款</span></div>
                     <div class="clear"></div>
                 </div>
-                <form action="{:url('home/Applyfor/save')}" method="post">
+                <form action="{:url('home/Applyfor/save')}" method="post" id="signupForm">
                     <div id="part1">
                         <div class="tbconcell">
                             <div class="tdleft"><span>*</span>姓名：</div>
@@ -89,25 +91,44 @@
                             <div class="tdright"><span id="stxbCardId"></span></div>
                             <div class="clear"></div>
                         </div>
+                        <div class="tbconcell">
+                            <div class="tdleft"><span>*</span>手机号：</div>
+                            <div class="tdmid"><input name="tel" type="text" class="tbinput" maxlength="18" autocomplete="off"> </div>
+                            <div class="tdright"><span ></span></div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="tbconcell" >
+                            <div class="tdleft"><span>*</span>生日月：</div>
+                            <div class="tdmid"><input name="birthday" type="input"class="tbinput" maxlength="14" ></div>
+                            <div class="tdright"><span ></span></div>
+                            <div class="clear"></div>
+                        </div>
                         <div style="position: relative;margin-left: 170px;">
                             <div style="display: none;" class="numberdiv" id="txbNumberRept">
                             </div>
                         </div>
                         <div class="tbconcell" style="height:auto;">
-                            <div class="tdleft"><span>*</span>：选择卡面</div>
+                            <div class="tdleft"><span>*</span>选择卡面：</div>
                             <div class="tdmid">
                                 <div class="newcardselect" id="newcardselect">
                                     <dl id="dl_0" v-for="item in info">
-                                        <dt><input type="radio" name="name" id="" :value="item.name"> {{item.name}}</dt>
+                                        <dt><input type="radio" name="ct_id" id="" :value="item.id"> {{item.name}}</dt>
                                         <dd><img alt="" title=""   :src=item.image class="images"> </dd>
                                     </dl>
                                 </div>
                             </div>
                             <div class="clear"></div>
                         </div>
-                        <div class="tbconcell">
-                            <div class="tdleft"><span>*</span>公司所在区域：</div>
+
+                        <div class="tbconcell" >
+                            <div class="tdleft"><span>*</span>邮寄地址：</div>
                             <div class="tdmid"><input name="address" type="text"class="tbinput" maxlength="14" ></div>
+                            <div class="tdright"><span ></span></div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="tbconcell" >
+                            <div class="tdleft"><span>*</span>邮箱：</div>
+                            <div class="tdmid"><input name="email" type="email"class="tbinput" maxlength="14" ></div>
                             <div class="tdright"><span ></span></div>
                             <div class="clear"></div>
                         </div>
@@ -142,4 +163,31 @@
         }
     }
     Vue.createApp(app).mount('#newcardselect')
+</script>
+<script>
+    $().ready(function() {
+// 在键盘按下并释放及提交后验证提交表单
+        $("#signupForm").validate({
+            rules: {
+                username: "required",
+                idcard: "required",
+                tel: "required",
+                address: "required",
+                email: {
+                    required: true,
+                    email: true
+                },
+            },
+            messages: {
+                username: "请输入您的姓名",
+                idcard: "请输入身份证号",
+                tel: "请输入身份证号",
+                address: "请输入邮寄地址",
+                email: "请输入一个正确的邮箱",
+            }
+
+        })
+
+    });
+
 </script>
