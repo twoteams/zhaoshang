@@ -3,10 +3,16 @@ declare (strict_types = 1);
 
 namespace app\home\controller;
 
+
 use app\BaseController;
 use app\Request;
+
+use app\home\model\CardFace;
+use app\home\model\CardType;
+
 use think\App;
-use think\facade\Db;
+use think\Db;
+
 
 class Index extends BaseController
 {
@@ -15,6 +21,20 @@ class Index extends BaseController
     {
         parent::__construct($app);
         $this->user_id = session('user')?session('user.id'):$this->user_id;
+    }
+
+    public function card_face_list()
+    {
+        $data = CardFace::card_face_list();
+        return show('200','信用卡类型展示',$data);
+    }
+
+    public function card_type()
+    {
+        $data = CardType::card_type();
+        return show('200','信用卡卡面类型展示',$data);
+
+
     }
 
     public function index()
@@ -27,6 +47,7 @@ class Index extends BaseController
             $data['card'] = $card;
         }
         return show(200,'',$data);
+
     }
 
 }

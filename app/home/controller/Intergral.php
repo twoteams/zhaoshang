@@ -5,7 +5,7 @@ use app\BaseController;
 use app\Request;
 use think\facade\Db;
 
-class                                                                         Intergral extends BaseController{
+class  Intergral extends BaseController{
 
     //积分兑换
     public function intergral()

@@ -1,489 +1,261 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>招商银行信用卡申请</title>
-    <link rel="stylesheet" href="{__STATIC__}/layui/dist/css/layui.css">
-    <script src="{__STATIC__}/layui/dist/layui.all.js"></script>
-    <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
-    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="http://market.cmbchina.com/ccard/ccwebui/scripts/commonheader.js" type="text/javascript"></script>
-    <script type="text/javascript" src="http://market.cmbchina.com/ccard/ccwebui/Scripts/jquery-1.10.2.js"></script>
-    <script type="text/javascript"
-            src="http://market.cmbchina.com/ccard/ccwebui/Scripts/CommonHeaderControl.js"></script>
-    <link rel="stylesheet" type="text/css" href="http://market.cmbchina.com/ccard/ccwebui/Styles/Head.css">
-    <script src="http://market.cmbchina.com/ccard/ccwebui/scripts/footer.js" type="text/javascript"></script>
-    <script type="text/javascript" src="http://market.cmbchina.com/ccard/ccwebui/Scripts/FooterControl.js"></script>
-    <link rel="stylesheet" type="text/css" href="http://market.cmbchina.com/ccard/ccwebui/Styles/Common.css">
-    <style type="text/css">
-        @charset "utf-8";
-        body,
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        hr,
-        p,
-        blockquote,
-        dl,
-        dt,
-        dd,
-        ul,
-        ol,
-        li,
-        pre,
-        form,
-        fieldset,
-        legend,
-        button,
-        input,
-        textarea,
-        th,
-        td {
-            margin: 0;
-            padding: 0;
-        }
-
-        textarea {
-            resize: none
-        }
-
-        .footerbg {
-            margin-top: 0px !important;
-        }
-
-        body area:focus {
-            outline: none;
-        }
-
-        body,
-        button,
-        input,
-        select,
-        textarea {
-            font: 12px/1.5 Arial, Helvetica, sans-serif;
-            outline: none;
-        }
-
-        ul,
-        ol {
-            list-style: none;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        a,
-        a:link,
-        a:active {
-            text-decoration: none;
-        }
-
-        div,
-        p {
-            word-break: break-all;
-        }
-
-        a {
-            blr: expression(this.onFocus=this.blur());
-            /*IE Opera*/
-            outline: none;
-            /*FF Opera*/
-        }
-
-        a:focus {
-            -moz-outline-style: none;
-            /*FF*/
-        }
-
-        img {
-            vertical-align: top;
-            border: 0;
-        }
-
-        .main {
-            position: relative;
-            background: #ffffff no-repeat;
-            width: 100%;
-            height: auto;
-            /*margin: 0 auto;*/
-            margin: 0 0;
-            font-family: "微软雅黑";
-            overflow: hidden;
-            text-align: center;
-        }
-
-        .pop,
-        .pop1 {
-            display: none;
-        }
-
-        .pop01 {
-            position: absolute;
-            left: 42px;
-            top: 520px;
-            z-index: 3;
-        }
-
-        .pop02 {
-            position: absolute;
-            left: 592px;
-            top: 519px;
-            z-index: 4;
-        }
-
-        .pop03 {
-            position: absolute;
-            left: 41px;
-            top: 964px;
-            z-index: 5;
-        }
-
-        .pop04 {
-            position: absolute;
-            left: 596px;
-            top: 967px;
-            z-index: 6;
-        }
-
-        .down_1 {
-            cursor: pointer;
-        }
-
-        #pagebottom {
-            position: relative;
-            width: 100%;
-            height: 135px;
-            background: #e9ecef;
-            overflow: hidden;
-        }
-
-        #pagebottom-img {
-            width: 100%;
-            height: 135px;
-            background: url("images/pagebottom-img.png") no-repeat center center;
-        }
-
-        #pagetop {
-            position: relative;
-            width: 100%;
-            height: 340px;
-            /*background-image: url(images/pc_01.jpg);*/
-            /*background: #000;*/
-            overflow: hidden;
-        }
-
-        #pagetop-bag {
-            position: absolute;
-            width: 100%;
-            top: 0px;
-            left: 0px;
-            transition: all 1s ease-in-out;
-            -moz-transition: all 1s ease-in-out;
-        }
-
-        #pagetop-bag.show {
-            left: -100%;
-        }
-
-
-        #pagetop1 {
-            position: absolute;
-            width: 100%;
-            height: 250px;
-            background: url("images/pagetop1.jpg") no-repeat center center;
-            top: 0px;
-            left: 0%;
-        }
-
-        #pagetop2 {
-            position: absolute;
-            width: 100%;
-            height: 250px;
-            background: url("images/pagetop2.jpg") no-repeat center center;
-            top: 0px;
-            left: 0%;
-        }
-
-        #pagetop3 {
-            position: absolute;
-            width: 100%;
-            height: 250px;
-            background: url("images/pagetop3.jpg") no-repeat center center;
-            top: 0px;
-            left: 0%;
-        }
-
-
-        #pagetop-point {
-            position: absolute;
-            width: 100px;
-            height: 14px;
-            top: 225px;
-            left: 47%;
-            /*background: #33AAAA;*/
-        }
-
-        .pagetop-point {
-            width: 14px;
-            height: 14px;
-            float: left;
-            margin-right: 10px;
-            background: url(images/pagetop-point-off.png) no-repeat center center;
-            cursor: pointer;
-        }
-
-
-        .pagetop-point.on {
-            background: url(images/pagetop-point-on.png) no-repeat center center;
-        }
-
-
-        #pagetop-bottom {
-            position: absolute;
-            width: 100%;
-            height: 90px;
-            top: 250px;
-            left: 0px;
-            background: url(images/pagetop-bottom.jpg) no-repeat center center;
-            z-index: 2;
-        }
-
-        #pagecontent {
-            position: initial;
-            background: #ffffff no-repeat;
-            width: 1006px;
-            height: auto;
-            margin: 0 auto;
-            font-family: "微软雅黑";
-            overflow: hidden;
-            /*padding-bottom: 50px;*/
-        }
-
-        #pagecontent-btn {
-            width: 1006px;
-            height: 36px;
-            margin-top: 25px;
-            margin-bottom: 15px;
-            /*background: #ff0;*/
-            text-align: center;
-            font-size: 17px;
-        }
-
-        .pagecontent-btn {
-            width: 186px;
-            height: 36px;
-            float: left;
-            background: url(images/pagecontent-btn-off.png) no-repeat center center;
-            margin-left: 7px;
-            margin-right: 7px;
-            color: #000000;
-            font-weight: 100;
-            cursor: pointer;
-        }
-
-        .pagecontent-btn.on {
-            background: url(images/pagecontent-btn-on.png) no-repeat center center;
-            color: #FFFFFF;
-            font-weight: 600;
-        }
-
-        .pagecontent-btn p {
-            margin: 5px;
-        }
-
-        #pagecontent-main {
-            margin-top: px;
-            margin-bottom: 30px;
-        }
-
-        .pagecontent-main {
-            display: none;
-        }
-
-        #pagecontent-main1 {
-            display: block;
-        }
-
-        .pagecontent-main-row {
-            position: initial;
-            background: #ffffff no-repeat;
-            width: 100%;
-            height: 225px;
-        }
-
-        .pagecontent-main-line {
-            position: initial;
-            background: url(images/pagecontent-main-line.png) no-repeat center center;
-            width: 100%;
-            height: 5px;
-            margin-bottom: 20px;
-        }
-
-        .pagecontent-main-box {
-            position: relative;
-            /*background: #aaa;*/
-            width: 49%;
-            height: 225px;
-            float: left;
-            margin-left: 7px;
-            text-align: left;
-        }
-
-        .pagecontent-main-box-left {
-            position: initial;
-            /*background: #aaa;*/
-            width: 55%;
-            height: 225px;
-            float: left;
-            text-align: right;
-        }
-
-        #pagecontent-main1 .pagecontent-main-box-left {
-            cursor: pointer;
-        }
-
-        .pagecontent-main-box-left img {
-            margin-top: 30px;
-            /*margin-left: 30px;*/
-            margin-right: 10px;
-        }
-
-        #pagecontent-main1 img {
-            margin-top: 50px;
-            /*margin-left: 30px;*/
-            margin-right: 10px;
-        }
-
-        .pagecontent-main-box-right {
-            position: relative;
-            /*background: #aaa;*/
-            width: 42%;
-            height: 225px;
-            float: left;
-            padding-left: 3%;
-            /*margin-left: 20px;*/
-        }
-
-        .pagecontent-main-box-txt {
-            position: initial;
-            /*background: #3aa;*/
-            width: 100%;
-            /*height: 150px;*/
-            margin-top: 30px;
-            color: #000000;
-        }
-
-        .pagecontent-main-box-txt h6 {
-            font-size: 18px;
-            margin-top: 45px;
-            color: #000000;
-        }
-
-        .pagecontent-main-box-txt p {
-            font-size: 14px;
-            margin-top: 5px;
-            color: #000000;
-        }
-
-        .pagecontent-main-box-btn {
-            position: initial;
-            width: 100%;
-            height: 35px;
-            margin-top: 15px;
-        }
-
-        .pagecontent-main-box-hot {
-            position: absolute;
-            width: 24px;
-            height: 14px;
-            left: 120px;
-            top: 30px;
-            background: url(images/pagecontent-main-box-hot.png) no-repeat left center;
-        }
-
-        #pagecontent-main1 .pagecontent-main-box-hot {
-            left: 160px;
-        }
-
-        .pagecontent-main-box-float {
-            position: absolute;
-            background: #e9eaed;
-            width: 100%;
-            height: 100%;
-            left: 0px;
-            top: 0px;
-            text-align: left;
-        }
-
-        .pagecontent-main-box .pagecontent-main-box-float {
-            display: none;
-        }
-
-        /*			.pagecontent-main-box:hover .pagecontent-main-box-float {
-            display: block;
-        }*/
-
-        .pagecontent-main-box-float h6 {
-            font-size: 16px;
-            margin-top: 20px;
-            padding-left: 20px;
-            padding-right: 10px;
-            color: #1a1a1a;
-        }
-
-        .pagecontent-main-box-float h7 {
-            font-size: 12px;
-            margin-top: 10px;
-            padding-left: 20px;
-            padding-right: 20px;
-            color: #cc0435;
-            font-weight: 600;
-        }
-
-        .pagecontent-main-box-float p {
-            font-size: 12px;
-            margin-top: 5px;
-            padding-left: 20px;
-            padding-right: 20px;
-            color: #3f3f3f;
-        }
-    </style>
-    <script src="http://sdc.cmbchina.com/dcs5w0txb10000wocrvqy1nqm_6n1p/wtid.js"></script>
-    <script src="http://market.cmbchina.com/ccard/ccwebui//Scripts/sdc_cmb.js"></script>
-</head>
-
-<body>
-<div id="pagecontent">
-    <div id="pagecontent-main">
-        <div class="pagecontent-main" id="pagecontent-main1" style="display: block;">
-            <div class="pagecontent-main-row">
-                <div class="pagecontent-main-box">
-                    <div class="pagecontent-main-box-left">
-                        <img src="{__STATIC__}/images/pagecontent-main-row11-2.png">
-
+    <meta http-equiv="Cache-Control" content="no-cache,no-store,must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta charset="utf-8">
+    <title>信用卡网上申请_信用卡快速办理_在线申请信用卡-二组银行信用卡中心</title>
+    <meta name="keywords" content="信用卡在线申请,信用卡网上申请,信用卡快速办理,二组银行信用卡在线申请">
+    <meta name="description" content="二组银行信用卡申请中心为您提供二组银行信用卡最新最全产品介绍、信用卡在线申请、信用卡快速办理等服务；其中包括标准卡、特色主题卡、高端白金卡、专享卡、联名卡、附属卡等二组银行信用卡在线申请，想了解更多信用卡网上申请，请上二组银行信用卡中心。">
+    <meta content="zh-cn" http-equiv="content-language">
+    <meta content="本页版权归二组银行信用卡所有。all rights reserved" name="copyright">
+    <meta name="mobile-agent" content="format=html5;url= https://creditcard.ecitic.com/h5/shenqing/">
+
+    <link href="https://main.citiccardcdn.citicbank.com/shenqing/css_2015/sq_card_list.css?v=1614761093348" type="text/css" rel="stylesheet">
+    <link href="https://main.citiccardcdn.citicbank.com/shenqing/css_2015/base2015.css?v=1614761093348" type="text/css" rel="stylesheet">
+    <link href="https://creditcard.ecitic.com/2019_gw/css/style.css" rel="stylesheet" type="text/css">
+    <link rel="alternate" media="only screen and (max-width: 640px)" href="https://main.citiccardcdn.citicbank.com/shenqing/ https://creditcard.ecitic.com/h5/shenqing/?v=1614761093348">
+    <script src="https://cdn.staticfile.org/vue/3.0.5/vue.global.js"></script>
+    <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+<body style="background:#f9f9f9">
+<!--开始-->
+<div class="main">
+    <div class="gtop">
+        <div class="w100">
+            <div class="gtop_01">
+                <div class="glogo" style="margin-top: -15px">
+                    <a href="https://creditcard.ecitic.com/?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE001"><img src="{__STATIC__}default/images/blogo.jpg"></a>
+                </div>
+                <div class="slogo-2">
+                    <img src="https://main.citiccardcdn.citicbank.com/shenqing/../2019_gw/images/s_logo_2.gif?v=1614761093348">
+                </div>
+                <ul class="gtop_nav01">
+                    <li><a href="https://etrade.citicbank.com/portalweb/html/map.html?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE006">网点查询</a></li>
+                    <li><a href="https://uc.creditcard.ecitic.com/citiccard/ucweb/toRegister.do?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE047">登录</a></li>
+                </ul>
+                <p class="gtop_tel">本网站已支持IPv6 &nbsp; 24小时客服热线40088-95558</p>
+            </div>
+            <div class="gtop_02">
+                <div class="nav-menu">
+                    <ul class="nav-ul">
+                        <li class="none-bor"><a href="https://creditcard.ecitic.com/?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE007">首页</a></li>
+                        <li class="active"><a href="javascript:;" onclick="buttonEvent(this);" id="PCHOMEPAGE008">办卡</a></li>
+                        <li class="nav-icon"><a>用卡服务</a>
+                            <div class="nav-s">
+                                <ul class="nav-s-ul">
+                                    <li><a>查账还款</a>
+                                        <div class="nav-x">
+                                            <ul class="nav-x-ul">
+                                                <li><a href="https://creditcard.ecitic.com/citiccard/ebankpc/bill.html?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE009">账单查询</a></li>
+                                                <li><a href="https://creditcard.ecitic.com/youhui/wangshanghuankuan/?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE010">在线还款</a></li>
+                                            </ul>
+                                        </div> </li>
+                                    <li><a>客户服务</a>
+                                        <div class="nav-x">
+                                            <ul class="nav-x-ul">
+                                                <li><a href="https://creditcard.ecitic.com/shenqing/?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE011">信用卡申请</a></li>
+                                                <li><a href="https://creditcard.ecitic.com/citiccard/ebankpc/applyProcessQry.html?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE012">申卡进度查询</a></li>
+                                                <li><a href="https://creditcard.ecitic.com/citiccard/ebankpc/openCard.html?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE013">信用卡开卡</a></li>
+                                            </ul>
+                                        </div> </li>
+                                    <li><a>账户设置</a>
+                                        <div class="nav-x">
+                                            <ul class="nav-x-ul">
+                                                <li><a href="https://creditcard.ecitic.com/citiccard/ebankpc/settingManage.html?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE014">账单获取方式设置</a></li>
+                                                <li><a href="https://creditcard.ecitic.com/citiccard/ebankpc/settingManage.html?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE015">交易提醒管理</a></li>
+                                                <li><a href="https://creditcard.ecitic.com/citiccard/ebankpc/settingManage.html?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE016">消费模式设置</a></li>
+                                            </ul>
+                                        </div> </li>
+                                    <li><a>信息查询</a>
+                                        <div class="nav-x">
+                                            <ul class="nav-x-ul">
+                                                <li><a href="https://eshop.creditcard.ecitic.com/neshoppc/userCenter.html?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE017">我的积分</a></li>
+                                                <li><a href="https://creditcard.ecitic.com/citiccard/ebankpc/activerights.html?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE018">我的权益</a></li>
+                                            </ul>
+                                        </div> </li>
+                                </ul>
+                            </div> </li>
+                        <li class="nav-icon"><a href="https://creditcard.ecitic.com/youhui/?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE019">热门活动</a>
+                            <div class="nav-s">
+                                <ul class="nav-s-ul">
+                                    <li><a href="https://creditcard.ecitic.com/youhui/?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE019_2">优惠活动</a></li>
+                                    <li><a href="https://creditcard.ecitic.com/jingwai.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE09_3">境外专区</a></li>
+                                </ul>
+                            </div> </li>
+                        <li class="nav-icon"><a>借款分期</a>
+                            <div class="nav-s">
+                                <ul class="nav-s-ul">
+                                    <li><a>我要分期</a>
+                                        <div class="nav-x">
+                                            <ul class="nav-x-ul">
+                                                <li><a href="https://creditcard.ecitic.com/citiccard/ebankpc/myaccount.html?func=mainpage&amp;sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE020">账单分期</a></li>
+                                                <li><a href="https://creditcard.ecitic.com/youhui/130805/?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE021">高额分期</a></li>
+                                                <!--
+                                                                   <li><a href="https://creditcard.ecitic.com/fenqi/wanggoufenqi/" onclick="buttonEvent(this);" id="PCHOMEPAGE022">网购分期</a></li>
+                                                                   <li><a href="https://creditcard.ecitic.com/fenqi/shangchangfenqi.shtml" onclick="buttonEvent(this);" id="PCHOMEPAGE023">商场分期</a></li>-->
+                                            </ul>
+                                        </div> </li>
+                                    <li><a>借现金</a>
+                                        <div class="nav-x">
+                                            <ul class="nav-x-ul">
+                                                <li><a href="https://creditcard.ecitic.com/xianjinfenqi2/index.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE024">长期借款</a></li>
+                                                <li><a href="https://creditcard.ecitic.com/suijiejin/index.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE025">短期借款</a></li>
+                                                <!--<li><a href="https://creditcard.ecitic.com/xinjinbao2/index.shtml?sid=ECCWKJK&qd=GW&rk=JKFQ&hd=NO" onclick="buttonEvent(this);" id="PCHOMEPAGE026">新客户借款</a></li>-->
+                                            </ul>
+                                        </div> </li>
+                                    <li><a>增值服务</a>
+                                        <div class="nav-x">
+                                            <ul class="nav-x-ul">
+                                                <li><a href="https://creditcard.ecitic.com/shangcheng/woaiwojia_a.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE027">增值产品</a></li>
+                                                <li><a href="https://creditcard.ecitic.com/shangcheng/zengzhichanpin.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE028">年费产品</a></li>
+                                                <li><a href="https://creditcard.ecitic.com/shangcheng/baoxian.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE029">保险代理</a></li>
+                                            </ul>
+                                        </div> </li>
+                                </ul>
+                            </div> </li>
+                        <li class="nav-icon"><a>友鱼 <strong>·</strong> 积分</a>
+                            <div class="nav-s">
+                                <ul class="nav-s-ul">
+                                    <li><a href="youyu/index.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE030">积分商城</a></li>
+                                    <li><a href="youyu/index.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE031">友鱼商城</a></li>
+                                </ul>
+                            </div> </li>
+                        <li class="nav-icon"><a>客户指南</a>
+                            <div class="nav-s">
+                                <ul class="nav-s-ul">
+                                    <li><a>信用卡服务</a>
+                                        <div class="nav-x">
+                                            <ul class="nav-x-ul">
+                                                <li><a href="https://creditcard.ecitic.com/yongka/zhishi.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE032">信用卡知识</a></li>
+                                                <li><a href="https://creditcard.ecitic.com/yongka/quanyi.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE033">卡友专属权益</a></li>
+                                                <li><a href="https://creditcard.ecitic.com/yongka/anquan.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE034">安全用卡</a></li>
+                                            </ul>
+                                        </div> </li>
+                                    <li><a>账单还款</a>
+                                        <div class="nav-x">
+                                            <ul class="nav-x-ul">
+                                                <li><a href="https://creditcard.ecitic.com/huankuan/?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE035">还款方式</a></li>
+                                                <li><a href="https://creditcard.ecitic.com/huankuan/waibi.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE036">外币还款</a></li>
+                                                <li><a href="https://creditcard.ecitic.com/yongka/zhangdan.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE037">账单服务</a></li>
+                                                <li><a href="https://creditcard.ecitic.com/yongka/huankuan.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE038">还款服务</a></li>
+                                            </ul>
+                                        </div> </li>
+                                    <li><a>其他服务</a>
+                                        <div class="nav-x">
+                                            <ul class="nav-x-ul">
+                                                <li><a href="https://creditcard.ecitic.com/youhui/160329/?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE039">移动支付</a></li>
+                                                <li><a href="https://creditcard.ecitic.com/xinshou/?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE040">新手入门</a></li>
+                                                <li><a href="https://creditcard.ecitic.com/dianziyinhang/duanxinfuwu.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE041">短信服务</a></li>
+                                                <!--<li><a href="https://creditcard.ecitic.com/dianziyinhang/dianyoufuwu.shtml" onclick="buttonEvent(this);" id="PCHOMEPAGE042">电邮服务</a></li>-->
+                                                <li><a href="https://creditcard.ecitic.com/dianziyinhang/zizhuyuyin.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE043">自助语音服务</a></li>
+                                                <li><a href="https://creditcard.ecitic.com/yongka/fengxian.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE044">风险提示</a></li>
+                                            </ul>
+                                        </div> </li>
+                                </ul>
+                            </div> </li>
+                    </ul>
+                </div>
+                <div class="wrapper-div">
+                    <div class="input-div">
+                        <input placeholder="二组银行颜卡" class="input-area" type="text" >
+                        <button class="search-btn" onclick="goSearch(-1)"></button>
                     </div>
-                    <div class="pagecontent-main-box-right">
-                        <div class="pagecontent-main-box-txt">
-                            <h6>宝可梦粉丝卡 </h6>
-
-                            <p>新户达标领宝可梦周边<br>
-                                宝可梦：就决定是你了！</p>
+                    <!-- 虚拟框 -->
+                    <div class="content-div" onmouseover="mouseOver()" onmouseout="mouseOut()" style="display: none;">
+                        <!-- 热门搜索和历史搜索 和猜你喜欢-->
+                        <div class="show-hot-and-his">
+                            <div class="hot-div"></div>
+                            <div class="his-div"></div>
+                            <div class="guess-div"></div>
                         </div>
-
-                        <div class="pagecontent-main-box-btn" style="left:180px">
-                            <a href="create.html" class="layui-btn layui-btn-danger">立即申请</a>
+                        <!-- 关联词 -->
+                        <div class="show-linked">
+                            <div class="linked-div"></div>
                         </div>
-
                     </div>
+                </div>
+                <div class="clearfloat"></div>
+            </div>
+        </div>
+    </div>
+    <!--top结束--->
+    <!--  banner -->
+    <div class="cards_con" id="app">
+        <p class="nav_menu"><a href="https://creditcard.ecitic.com/shenqing/fushuka/index.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" target="_blank">附属卡有礼</a> | <a href="../youhui/150326_3/?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" target="_blank">推荐亲友办卡</a></p>
+        <a id="qrcode">扫描二维码申请<canvas width="100" height="100"></canvas><img style="display: none;"></a>
+        <ul>
+            <li v-for="item in info">
+                <h2 style="font-weight:normal;"><p class="card_name">{{item.name}}</p></h2>
+                <p class="lh24_fs14_cf">你的专属信用卡</p>
+                <div class="card_line"></div>
+                <div class="card_box">
+                    <div class="card_pic">
+                        <img :src=item.image title="{{item.name}}">
+                        <div class="card_layer1"></div>
+                    </div>
+                    <div class="card_text">
+                        {{item.desc}}
+                    </div>
+                    <div class="c"></div>
+                </div>
+                <div class="card_btn">
+                    <div class="card_tag">
+                        <div class="tag_box1">
+                            <span class="tag_msg tag_msg1">刷卡免年费</span>
+                        </div>
+                    </div>
+                    <div class="card_sq_btn">
+                        <h3 class="qrbtn"><a href="create">免费申请</a></h3>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div style="height:30px; display:block; clear:both"></div>
+    <div class="footer_link_wrap">
+        <div class="w100">
+            <div class="footer_wrap">
+                <div class="footer clearfix" style="display: block;">
+                    <div class="link_area">
+                        <ul class="foot_link clearfix">
+                            <li> <a href="https://creditcard.ecitic.com/guanyuwomen.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE212" target="_blank">关于我们</a> </li>
+                            <li> <a href="https://creditcard.ecitic.com/zhaopin/?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE213" target="_blank">人才招聘</a> </li>
+                            <li> <a href="http://bank.ecitic.com/?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE214" target="_blank">银行首页</a> </li>
+                            <li> <a href="https://creditcard.ecitic.com/daohang.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE215" target="_blank">网站地图</a> </li>
+                            <li> <a href="https://creditcard.ecitic.com/lianxiwomen.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE216" target="_blank">联系我们</a> </li>
+                            <li> <a href="https://creditcard.ecitic.com/youqinglianjie.shtml?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE217" target="_blank">友情链接</a> </li>
+                            <li> <a href="https://creditcard.ecitic.com/h5/index.html?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366" onclick="buttonEvent(this);" id="PCHOMEPAGE218" target="_blank">移动官网</a> </li>
+                        </ul>
+                    </div>
+                    <div class="left_con">
+                        <p class="p_right">二组控股有限责任公司版权所有 Copyright © CITIC Holdings All rights reserved<br>京公网安备11010502020433号  <a href="http://www.beian.miit.gov.cn?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366">京ICP证 030779-2号</a></p>
+                    </div>
+                    <div class="right_con">
+                        <div class="service_tel0">
+                            <p class="p1">二组电话营销服务专线：</p>
+                            <p class="p2">4000895558/10195558</p>
+                        </div>
+                        <div class="service_tel1">
+                            <p class="p1">24小时客服热线</p>
+                            <p class="p2">40088 - 95558</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pop_card">
+        <a href="https://creditcard.ecitic.com/yonghubiaoqian/?sid=ECCQDS047&amp;renqun_youhua=1797092&amp;bd_vid=7828548091463070366"></a>
+    </div>
+    <div id="pop_card" class="pop_card_box" style="display:none;">
+        <div class="rules_exit"><a href="javascript:;" onclick="close_div('pop_card')"></a></div>
+        <div class="mod_tips">
+            <div class="banner-box">
 
+                <div class="banner-btn">
+                    <div class="hd"><ul></ul></div>
+                    <a class="prev" href="javascript:void(0);"></a>
+                    <a class="next" href="javascript:void(0);"></a>
                 </div>
             </div>
         </div>
@@ -491,3 +263,24 @@
 </div>
 </body>
 </html>
+
+
+
+<script>
+    const app = {
+        data() {
+            return {
+                info: ''
+            }
+        },
+        mounted () {
+            axios
+                .get('http://www.zsbank.com/home/index')
+                .then(response => (this.info = response.data.data))
+                .catch(function (error) { // 请求失败处理
+                    console.log(error);
+                });
+        }
+    }
+    Vue.createApp(app).mount('#app')
+</script>
