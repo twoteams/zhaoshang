@@ -70,11 +70,11 @@
         <div id="cardactivityp" class="homegift">
             新户刷卡达标送宝可梦周边
         </div>
-        <div style="margin: 10px 0 0 200px;">
+        <div style="margin: 10px 0 0 200px;" id="app">
             <div class="tbcon" style="overflow:visible;">
                 <div class="tbconcell">
                     <div class="tdleft">您正在申请的是：</div>
-                    <div class="tdmid" style="font-weight:bold; color:#333;"><span id="lbCardName">宝可梦粉丝卡家族款</span></div>
+                    <div class="tdmid" style="font-weight:bold; color:#333;"><span id="lbCardName">{{cf_name}}</span></div>
                     <div class="clear"></div>
                 </div>
                 <form action="{:url('home/Applyfor/save')}" method="post" id="signupForm">
@@ -112,7 +112,7 @@
                             <div class="tdmid">
                                 <div class="newcardselect" id="newcardselect">
                                     <dl id="dl_0" v-for="item in info">
-                                        <dt><input type="radio" name="ct_id" id="" :value="item.id"> {{item.name}}</dt>
+                                        <dt><input type="radio" name="ct_id" id="" :value="item.id"> {{item.ct_name}}</dt>
                                         <dd><img alt="" title=""   :src=item.image class="images"> </dd>
                                     </dl>
                                 </div>
@@ -149,20 +149,26 @@
     const app = {
         data() {
             return {
-                info: ''
+                info: '',
+                cf_name: ''
             }
         },
         mounted () {
             axios
                 .get('/home/card_type')
-
                 .then(response => (this.info = response.data.data))
+                .catch(function (error) { // 请求失败处理
+                    console.log(error);
+                });
+            axios
+                .get('/home/cf_name')
+                .then(response => (this.cf_name = response.data.data))
                 .catch(function (error) { // 请求失败处理
                     console.log(error);
                 });
         }
     }
-    Vue.createApp(app).mount('#newcardselect')
+    Vue.createApp(app).mount('#app')
 </script>
 <script>
     $().ready(function() {

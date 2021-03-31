@@ -31,9 +31,14 @@ class Index extends BaseController
     {
         $data = CardType::card_type();
         return show('200','信用卡卡面类型展示',$data);
-
-
     }
+
+    public function cf_name()
+    {
+        $data = session('cf_name');
+        return show('200','信用卡标题展示',$data);
+    }
+
 
     public function index()
     {

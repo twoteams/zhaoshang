@@ -115,24 +115,24 @@
     </div>
     <div class="content">
         <div class="con_930">
-        <div style="margin: 10px 0 0 200px;">
+        <div style="margin: 10px 0 0 200px;" id="app">
             <div class="tbcon" style="overflow:visible;">
                 <div class="tbconcell">
                     <div class="tdleft">您正在申请的是：</div>
-                    <div class="tdmid" style="font-weight:bold; color:#333;"><span id="lbCardName">宝可梦粉丝卡家族款</span></div>
+                    <div class="tdmid" style="font-weight:bold; color:#333;"><span id="lbCardName">{{info.title}}</span></div>
                     <div class="clear"></div>
                 </div>
                 <form action="" method="post">
                     <div id="part1">
                         <div class="tbconcell">
                             <div class="tdleft"><span>*</span>姓名：</div>
-                            <div class="tdmid"><input name="name" type="text" id="name" class="tbinput" maxlength="14" placeholder="请与证件一致"></div>
+                            <div class="tdmid"><input name="name" type="text" id="name" class="tbinput" maxlength="14" :value="info.username" disabled></div>
                             <div class="tdright"><span id="stxbName"></span></div>
                             <div class="clear"></div>
                         </div>
                         <div class="tbconcell">
                             <div class="tdleft"><span>*</span>身份证号：</div>
-                            <div class="tdmid"><input name="cardid" type="text" id="txbCardId" class="tbinput" maxlength="18" autocomplete="off"> </div>
+                            <div class="tdmid"><input name="cardid" type="text" id="txbCardId" class="tbinput" maxlength="18" :value="info.idcard" disabled> </div>
                             <div class="tdright"><span id="stxbCardId"></span></div>
                             <div class="clear"></div>
                         </div>
@@ -159,7 +159,8 @@
                                 <div class="newcardselect" id="newcardselect">
 
                                     <dl id="dl_0" style="height: 26px">
-                                        <dt><input type="radio" name="image_id" id="" value="" checked> 银联金卡</dt>
+                                        <dt><input type="radio" name="image_id" id="" :value="info.ct_id" checked>
+                                            {{info.ct_name}}</dt>
                                     </dl>
 
                                 </div>
@@ -226,4 +227,25 @@
         </li>
     </ul>
 </div>
-</body></html>
+</body>
+</html>
+<script src="https://cdn.staticfile.org/vue/3.0.5/vue.global.js"></script>
+<script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+<script>
+    const app = {
+        data() {
+            return {
+                info: '',
+            }
+        },
+        mounted () {
+            axios
+                .get('/home/info')
+                .then(response => (this.info = response.data.data))
+                .catch(function (error) { // 请求失败处理
+                    console.log(error);
+                });
+        }
+    }
+    Vue.createApp(app).mount('#app')
+</script>

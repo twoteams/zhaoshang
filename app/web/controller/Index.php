@@ -5,7 +5,8 @@ namespace app\web\controller;
 
 use app\BaseController;
 use app\home\controller\Base;
-use think\Db;
+use app\home\model\CardFace;
+use \think\facade\Db;
 use think\facade\View;
 
 class Index extends BaseController
@@ -20,18 +21,11 @@ class Index extends BaseController
     public function create($id)
     {
         session('cf_id',$id);
+        $cf = CardFace::find($id)['title'];
+        session('cf_name',$cf);
         return View::fetch();
     }
 
-    public function city(){
-        $data = Db::table('city')->where('pid',0)->select();
-        return json(['code'=>200,'msg'=>'success','data'=>$data]);
-    }
-
-    public function citys($id){
-        $data = Db::table('city')->where('pid',$id)->select();
-        return json(['code'=>200,'msg'=>'success','data'=>$data]);
-    }
     // 激活
     public function activation()
     {
